@@ -1,6 +1,13 @@
 import express from "express";
+import pool from "./db";
 
 const app = express();
+
+pool.connect().then(client => {
+    client.query("select * from users limit 1").then(console.log);
+
+});
+
 
 
 app.listen(3000, () => {
