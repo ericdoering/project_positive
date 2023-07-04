@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageForm } from "../../components/messageForm";
+import { DaysForm } from "../../components/DaysForm";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 
 export default function Register(): JSX.Element {
@@ -32,7 +32,7 @@ export default function Register(): JSX.Element {
   return (
   <>
   {userSubmit ? null : 
-    <div className="mt-40 w-small ml-80 mr-80 mx-auto">
+    <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
   <form className="border-indigo-600" onSubmit={handleSubmit}>
     <div className="grid md:flex-col">
       <div className="relative z-0 w-full mb-6 group">
@@ -93,7 +93,7 @@ export default function Register(): JSX.Element {
     </div>
     <button
       type="submit"
-      className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      className="text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >
       Submit
     </button>
@@ -101,7 +101,7 @@ export default function Register(): JSX.Element {
 </div>
 }
 <div>
-    {userSubmit ? <MessageForm /> : null}
+    {userSubmit ? <DaysForm /> : null}
   </div>
 </>
   );
