@@ -76,7 +76,7 @@ export function DaysForm(): JSX.Element{
         </div>
         }
         <div>
-            {daysSubmit ? <TimeForm /> : null}
+            {daysSubmit ? <TimeForm onSubmit={() => {}} /> : null}
         </div>
     </>
     )
