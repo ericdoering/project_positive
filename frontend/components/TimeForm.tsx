@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { MessageForm } from "./MessageForm"
 
 type Option = {
   value: string;
@@ -38,6 +39,7 @@ export const TimeForm = () => {
   const [selectedOption1, setSelectedOption1] = useState<Option | null>(null);
   const [selectedOption2, setSelectedOption2] = useState<Option | null>(null);
   const [selectedOption3, setSelectedOption3] = useState<Option | null>(null);
+  const [timeSubmit, setTimeSubmit] = useState(false)
 
 
   const handleOption1Change = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -60,6 +62,7 @@ export const TimeForm = () => {
 
   const handleSubmit = async (evt: React.FormEvent<HTMLFormElement>): Promise<void> => {
     evt.preventDefault();
+    setTimeSubmit(true);
 
     const TimePayload = {
       time: {
@@ -76,6 +79,7 @@ export const TimeForm = () => {
 
   return (
       <>
+      {timeSubmit ? null : 
         <div className="flex items-center justify-center">
           <div>
             <h1 className="m-4">Select Time to Receive Texts</h1>
@@ -187,7 +191,17 @@ export const TimeForm = () => {
                 </div>
               </div>
             </div>
+            <button
+                    type="submit"
+                    className="text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                 Submit
+            </button>
           </form>
+        </div>
+        }
+        <div>
+            {timeSubmit ? <MessageForm  /> : null}
         </div>
       </>
   );
