@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import { ReviewForms } from "./ReviewForms";
 
 export function MessageForm(): JSX.Element{
     const [messagesSelected, setMessagesSelected] = useState<string[]>([]);
@@ -55,7 +56,7 @@ export function MessageForm(): JSX.Element{
         </div>
         }
         <div>
-        {messagesSubmit ? <h1>review selections</h1> : null}
+        {messagesSubmit ? <ReviewForms /> : null}
         </div>
     </>
     )
