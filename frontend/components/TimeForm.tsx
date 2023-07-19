@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { MessageForm } from "./MessageForm"
+import { formatTime } from "../utilities/time_formater"
 
 type Option = {
   value: string;
@@ -75,22 +76,17 @@ export const TimeForm = () => {
     console.log(TimePayload);
   };
 
-
+  const time = formatTime(selectedOption1?.value!, selectedOption2?.value!, selectedOption3?.value!)
 
   return (
       <>
       {timeSubmit ? null : 
         <div className="flex items-center justify-center">
-          <div>
-            <h1 className="m-4">Select Time to Receive Texts</h1>
-          </div>
-          <form onSubmit={handleSubmit} className="mt-4">
-            <button
-              className="mb-5 bg-green-500 text-white px-4 py-2 rounded-lg"
-              type="submit"
-            >
-              Choose Times
-            </button>
+        <div className="bg-gray-100 p-10 rounded form-size shadow-lg mt-10">
+            <div>
+          <h2>Select Time to Receive Texts</h2>
+        </div>
+        <form onSubmit={handleSubmit} className="mt-10 inline-block">
             <div className="flex justify-center space-x-4">
               <div>
                 <label htmlFor="formOption1" className="block">
@@ -193,11 +189,15 @@ export const TimeForm = () => {
             </div>
             <button
                     type="submit"
-                    className="text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="mt-4 text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                  Submit
             </button>
           </form>
+        </div>
+              <div className="flex items-center justify-center">
+                <span className="text-center">{time}</span>
+              </div>
         </div>
         }
         <div>

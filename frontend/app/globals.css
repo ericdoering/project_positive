@@ -60,3 +60,14 @@ to {background-position: -100px 0px;background-size:2750px;}
     width: 30rem;
     height: 20rem;
 }
+
+.review-heading {
+  font-size: 2rem; /* Adjust the font size as needed */
+  padding-bottom: 0.5rem; /* Add padding to create space below the heading */
+  border-bottom: 2px solid #4a5568; /* Adjust the color and thickness as needed */
+  font-family: 'Source Code Pro', monospace;
+}
+
+.gray-border {
+  border-bottom: 1px solid #4a5568; /* Adjust the color and thickness as needed */
+}

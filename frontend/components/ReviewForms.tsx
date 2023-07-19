@@ -1,6 +1,5 @@
 "use client";
 
-import Image from 'next/image';
 
 interface User {
     firstName: string;
@@ -44,21 +43,21 @@ interface User {
   
     return (
       <>
-        <div>
-            <div className="max-w-med rounded bg-gray-100 shadow-lg">
-                <Image className="w-full" width={200} height={100} src="/img/card-top.jpg" alt="Sunset in the mountains" />
-                <div>
-                    <h1>Review Information</h1>
-                    <h3>First Name: {user.firstName}</h3>
-                    <h3>Last Name: {user.lastName}</h3>
-                    <h3>Phone Number: {user.phoneNumber}</h3>
-                </div>
+        <div className="flex items-center justify-center">
+            <div className="rounded bg-gray-100 shadow-lg">
+            <div className="review-heading">Review Information</div>
+                <div className="text-center">
+                <h3>First Name: {user.firstName}</h3>
+                <h3>Last Name: {user.lastName}</h3>
+                <h3>Phone Number: {user.phoneNumber}</h3>
+            </div>
                 <button
                     className="text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                  Edit
                 </button>
-                <div>
+                <hr className="gray-border"></hr>
+                <div className='text-center'>
                     <h2>Days</h2>
                         <ul>
                         {user.days.map((d) => (
@@ -71,7 +70,8 @@ interface User {
                 >
                  Edit
                 </button>
-                <div>
+                <hr className="gray-border"></hr>
+                <div className='text-center'>
                     <h2>Time</h2>
                     <h3>{user.time.hour.slice(0,1)}:{user.time.minute.slice(2)}  {user.time.timeOfDay}</h3>
                 </div>
@@ -80,11 +80,12 @@ interface User {
                 >
                  Edit
                 </button>
-                <div>
+                <hr className="gray-border"></hr>
+                <div className='text-center'>
                     <h2>Types of Messages</h2>
                     {Object.entries(user.Messages).map(([key, value]) => {
                         if (value === true) {
-                        return <h5 key={key}>{key}</h5>;
+                        return <h5 key={key}>{key} ✔️</h5>;
                     }
                         return null;
                     })}
@@ -95,6 +96,11 @@ interface User {
                  Edit
                 </button>
                 </div>
+                <button
+                    className="text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                 Submit
+                </button>
             </div>
       </>
     );
