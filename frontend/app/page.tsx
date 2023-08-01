@@ -32,6 +32,7 @@ const Home: React.FC = () => {
 
   return (
     <>
+    <div className="flex items-center justify-center">
       <div className="flex flex-col items-center justify-center card-container">
         <section ref={(el) => (cardRefs.current[0] = el)} className="flex flex-col items-center container justify-center card">
           <div className="w-5/6 p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
@@ -51,6 +52,7 @@ const Home: React.FC = () => {
           </div>
         </section>
       </div>
+    </div>
     </>
   );
 };
