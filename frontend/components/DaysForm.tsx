@@ -2,16 +2,29 @@
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { TimeForm } from "./TimeForm";
+import { type User } from "../app/register/page"
 
-export function DaysForm(): JSX.Element{
+type Props = {
+    user: User;
+    setUser: (user: User) => void;
+}
+
+export function DaysForm({user, setUser}: Props): JSX.Element{
     const [daysSelected, setDaysSelected] = useState<string[]>([]);
     const [daysSubmit, setDaysSubmit] = useState(false)
 
       const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setUser({
+            ...user,
+            days: daysSelected
+          })
+
         setDaysSelected([]);
         setDaysSubmit(true);
       };
+
+      console.log(user)
 
       const handleDayChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
@@ -25,6 +38,7 @@ export function DaysForm(): JSX.Element{
     return (
         <>
         {daysSubmit ? null : 
+        <div className="flex items-center justify-center">
             <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
                 <form onSubmit={handleSubmit}>
                 <fieldset className="mb-4">
@@ -73,6 +87,7 @@ export function DaysForm(): JSX.Element{
                  Submit
                 </button>
             </form>
+        </div>
         </div>
         }
         <div>

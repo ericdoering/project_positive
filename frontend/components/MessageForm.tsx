@@ -26,6 +26,7 @@ export function MessageForm(): JSX.Element{
     return (
         <>
         {messagesSubmit ? null : 
+        <div className="flex items-center justify-center">
             <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
                 <form onSubmit={handleSubmit}>
                 <fieldset className="mb-4">
@@ -53,6 +54,7 @@ export function MessageForm(): JSX.Element{
                  Submit
                 </button>
             </form>
+        </div>
         </div>
         }
         <div>

@@ -3,13 +3,65 @@
 import { DaysForm } from "../../components/DaysForm";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 
+export type User = {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  days: string[];
+  time: {
+    hour: string;
+    minute: string;
+    timeOfDay: string;
+  };
+  Messages: {
+    Quotes: boolean;
+    Questions: boolean;
+    "Calls To Action": boolean;
+  };
+}
+
+
 export default function Register(): JSX.Element {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [userSubmit, setUserSubmit] = useState(false)
+  const [userSubmit, setUserSubmit] = useState(false);
+
+
+  const [user, setUser] = useState<User>({
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    days: [], 
+    time: {
+      hour: '',
+      minute: '',
+      timeOfDay: '',
+    },
+    Messages: {
+      Quotes: false,
+      Questions: false,
+      "Calls To Action": false,
+    },
+  });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    setUser({
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      days: [], 
+      time: {
+        hour: '',
+        minute: '',
+        timeOfDay: '',
+      },
+      Messages: {
+        Quotes: false,
+        Questions: false,
+        "Calls To Action": false,
+      },
+    })
     event.preventDefault();
     setUserSubmit(true)
     setFirstName("");
@@ -32,6 +84,7 @@ export default function Register(): JSX.Element {
   return (
   <>
   {userSubmit ? null : 
+  <div className="flex items-center justify-center">
     <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
   <form className="border-indigo-600" onSubmit={handleSubmit}>
     <div className="grid md:flex-col">
@@ -99,9 +152,10 @@ export default function Register(): JSX.Element {
     </button>
   </form>
 </div>
+</div>
 }
 <div>
-    {userSubmit ? <DaysForm /> : null}
+    {userSubmit ? <DaysForm user={user} setUser={setUser} /> : null}
   </div>
 </>
   );
