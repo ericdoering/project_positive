@@ -1,34 +1,25 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
 
+
 body {
-    position: static;
-    background-image: url('https://static.vecteezy.com/system/resources/previews/001/226/748/original/colorful-sunset-sky-free-photo.jpg');
-    background-size: cover;
-    -webkit-animation: slidein 100s;
-    animation: slidein 100s;
-
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-
-    -webkit-animation-direction: alternate;
-    animation-direction: alternate;              
+    background-color: rgb(190, 160, 243);           
 }
 
-@-webkit-keyframes slidein {
-from {background-position: top; background-size:3000px; }
-to {background-position: -100px 0px;background-size:2750px;}
-}
-
-@keyframes slidein {
-from {background-position: top;background-size:3000px; }
-to {background-position: -100px 0px;background-size:2750px;}
-
+body::before{
+  content: '';
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 500%;
+  height: 300%;
+  transform: scale(2.0);
+  background-image: url("../assets/honey_comb.png");
+  z-index: -1;
+  opacity: 0.075; 
 }
 
  h1{
@@ -75,4 +66,14 @@ to {background-position: -100px 0px;background-size:2750px;}
 .card.show {
   transform: translateX(0);
   opacity: 1;
+}
+
+.circle-container {
+  margin-top: 5rem;
+}
+
+.circle {
+  border-radius: 100%;
+  margin-left: -15px;
+  aspect-ratio: 1;
 }
