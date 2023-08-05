@@ -16,7 +16,7 @@ export type User = {
   Messages: {
     Quotes: boolean;
     Questions: boolean;
-    "Calls To Action": boolean;
+    callsToAction: boolean;
   };
 }
 
@@ -41,7 +41,7 @@ export default function Register(): JSX.Element {
     Messages: {
       Quotes: false,
       Questions: false,
-      "Calls To Action": false,
+      callsToAction: false,
     },
   });
 
@@ -59,7 +59,7 @@ export default function Register(): JSX.Element {
       Messages: {
         Quotes: false,
         Questions: false,
-        "Calls To Action": false,
+        callsToAction: false,
       },
     })
     event.preventDefault();

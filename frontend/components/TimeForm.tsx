@@ -3,11 +3,17 @@
 import React, { useState } from 'react';
 import { MessageForm } from "./MessageForm"
 import { formatTime } from "../utilities/time_formater"
+import { User } from '@/register/page';
 
 type Option = {
   value: string;
   label: string;
 };
+
+type Props = {
+  user: User;
+  setUser: (user: User) => void;
+}
 
 
 const hour: Option[] = [
@@ -36,7 +42,7 @@ const timeOfDay: Option[] = [
   { value: "PM", label: "PM" },
 ];
 
-export const TimeForm = () => {
+export const TimeForm = ({user, setUser}: Props) => {
   const [selectedOption1, setSelectedOption1] = useState<Option | null>(null);
   const [selectedOption2, setSelectedOption2] = useState<Option | null>(null);
   const [selectedOption3, setSelectedOption3] = useState<Option | null>(null);
@@ -64,16 +70,15 @@ export const TimeForm = () => {
   const handleSubmit = async (evt: React.FormEvent<HTMLFormElement>): Promise<void> => {
     evt.preventDefault();
     setTimeSubmit(true);
-
-    const TimePayload = {
+    setUser({
+      ...user,
       time: {
-        hour: selectedOption1?.value,
-        minute: selectedOption2?.value,
-        timeOfDay: selectedOption3?.value,
+        hour: selectedOption1?.value as string,
+        minute: selectedOption2?.value as string,
+        timeOfDay: selectedOption3?.value as string,
       },
-    };
-
-    console.log(TimePayload);
+    })
+    console.log(user)
   };
 
   const time = formatTime(selectedOption1?.value!, selectedOption2?.value!, selectedOption3?.value!)
@@ -201,7 +206,7 @@ export const TimeForm = () => {
         </div>
         }
         <div>
-            {timeSubmit ? <MessageForm  /> : null}
+            {timeSubmit ? <MessageForm user={user} setUser={setUser}  /> : null}
         </div>
       </>
   );

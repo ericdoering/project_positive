@@ -2,13 +2,24 @@
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { ReviewForms } from "./ReviewForms";
+import { User } from "@/register/page";
 
-export function MessageForm(): JSX.Element{
+type Props = {
+  user: User;
+  setUser: (user: User) => void;
+}
+
+export function MessageForm({user, setUser}: Props): JSX.Element{
     const [messagesSelected, setMessagesSelected] = useState<string[]>([]);
     const [messagesSubmit, setMessagesSubmit] = useState(false)
 
       const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setUser({
+          ...user,
+          Messages: messagesSelected
+        })
+        console.log(user)
         setMessagesSelected([]); 
         setMessagesSubmit(true);
       };

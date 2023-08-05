@@ -91,7 +91,7 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
         </div>
         }
         <div>
-            {daysSubmit ? <TimeForm /> : null}
+            {daysSubmit ? <TimeForm user={user} setUser={setUser} /> : null}
         </div>
     </>
     )
