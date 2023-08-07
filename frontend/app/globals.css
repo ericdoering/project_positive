@@ -16,10 +16,9 @@ body::before{
   left: 0;
   width: 500%;
   height: 300%;
-  transform: scale(2.0);
-  background-image: url("../assets/honey_comb.png");
+  background-image: url("../assets/main_background.png");
   z-index: -1;
-  opacity: 0.075; 
+  opacity: 0.5; 
 }
 
  h1{
@@ -43,7 +42,6 @@ body::before{
   font-size: 2rem; /* Adjust the font size as needed */
   padding-bottom: 0.5rem; /* Add padding to create space below the heading */
   border-bottom: 2px solid #4a5568; /* Adjust the color and thickness as needed */
-  font-family: 'Urbanist', sans-serif;
 }
 
 .gray-border {
@@ -76,4 +74,21 @@ body::before{
   border-radius: 100%;
   margin-left: -15px;
   aspect-ratio: 1;
+  border: 5px solid rgb(255, 255, 255);
+}
+
+.review-form {
+  width: 30rem;
+  margin-top: 20px;
+}
+
+.btn-wth {
+  width: 5rem;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.btn-sub {
+  margin-top: 10px;
+  width: 30rem;
 }

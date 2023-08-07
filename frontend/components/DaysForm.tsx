@@ -24,8 +24,6 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
         setDaysSubmit(true);
       };
 
-      console.log(user)
-
       const handleDayChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         if (daysSelected.includes(value)) {
@@ -38,7 +36,7 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
     return (
         <>
         {daysSubmit ? null : 
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center my-32">
             <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
                 <form onSubmit={handleSubmit}>
                 <fieldset className="mb-4">

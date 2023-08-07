@@ -17,9 +17,12 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
         event.preventDefault();
         setUser({
           ...user,
-          Messages: messagesSelected
+          Messages: {
+            Quotes: messagesSelected.includes("quotes"),
+            Questions: messagesSelected.includes("questions"),
+            callsToAction: messagesSelected.includes("actions"),  
+          },
         })
-        console.log(user)
         setMessagesSelected([]); 
         setMessagesSubmit(true);
       };
@@ -37,7 +40,7 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
     return (
         <>
         {messagesSubmit ? null : 
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center my-32">
             <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
                 <form onSubmit={handleSubmit}>
                 <fieldset className="mb-4">
@@ -69,7 +72,7 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
         </div>
         }
         <div>
-        {messagesSubmit ? <ReviewForms /> : null}
+        {messagesSubmit ? <ReviewForms user={user} setUser={setUser} /> : null}
         </div>
     </>
     )

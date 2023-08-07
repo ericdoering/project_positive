@@ -84,7 +84,7 @@ export default function Register(): JSX.Element {
   return (
   <>
   {userSubmit ? null : 
-  <div className="flex items-center justify-center">
+  <div className="flex items-center justify-center my-32">
     <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
   <form className="border-indigo-600" onSubmit={handleSubmit}>
     <div className="grid md:flex-col">

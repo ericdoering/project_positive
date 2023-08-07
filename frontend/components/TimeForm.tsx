@@ -78,7 +78,6 @@ export const TimeForm = ({user, setUser}: Props) => {
         timeOfDay: selectedOption3?.value as string,
       },
     })
-    console.log(user)
   };
 
   const time = formatTime(selectedOption1?.value!, selectedOption2?.value!, selectedOption3?.value!)
@@ -86,7 +85,7 @@ export const TimeForm = ({user, setUser}: Props) => {
   return (
       <>
       {timeSubmit ? null : 
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center my-32">
         <div className="bg-gray-100 p-10 rounded form-size shadow-lg mt-10">
             <div>
           <h2>Select Time to Receive Texts</h2>
