@@ -198,10 +198,10 @@ export const TimeForm = ({user, setUser}: Props) => {
                  Submit
             </button>
           </form>
-        </div>
-              <div className="flex items-center justify-center">
+          <div className="flex flex-row justify-center bg-gray-100">
                 <span className="text-center">{time}</span>
-              </div>
+          </div>
+        </div>
         </div>
         }
         <div>

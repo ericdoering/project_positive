@@ -3,6 +3,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { ReviewForms } from "./ReviewForms";
 import { User } from "@/register/page";
+import { MessageHelp } from "./MessageHelp";
 
 type Props = {
   user: User;
@@ -68,6 +69,9 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
                  Submit
                 </button>
             </form>
+            <div className="msg-help">
+              <MessageHelp />
+            </div>
         </div>
         </div>
         }

@@ -79,7 +79,7 @@ body::before{
 
 .review-form {
   width: 30rem;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .btn-wth {
@@ -91,4 +91,14 @@ body::before{
 .btn-sub {
   margin-top: 10px;
   width: 30rem;
+}
+
+.msg-help {
+  margin-top: 12rem;
+}
+
+.msg {
+  padding: 2px;
+  width: 40rem;
+  margin-bottom: 1rem;
 }
