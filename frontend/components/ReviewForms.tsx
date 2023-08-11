@@ -1,5 +1,7 @@
 "use client";
 
+import axios from "axios";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { User } from '@/register/page';
 
   type Props = {
@@ -9,6 +11,11 @@ import { User } from '@/register/page';
   
   
   export function ReviewForms({user}: Props): JSX.Element {
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        return await axios.post(`http://localhost:3456/register`, user)
+      };
 
 
     return (
@@ -83,12 +90,14 @@ import { User } from '@/register/page';
                 </button>
                 </div>
 
-
-                <button
-                    className="btn-sub bg-indigo-700 text-white active:bg-violet-600 text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-                >
-                 Submit
-                </button>
+                <form onSubmit={handleSubmit}>
+                    <button
+                        type="submit"
+                        className="btn-sub bg-indigo-700 text-white active:bg-violet-600 text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" 
+                    >
+                    Submit
+                    </button>
+                </form>
             </div>
       </>
     );

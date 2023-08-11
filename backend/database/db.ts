@@ -1,12 +1,12 @@
 import { Pool } from "pg";
 
 
-let database = 'postgresql:///routes'
+let database = 'postgresql:///project_positive'
 
 const pool = new Pool({
   user: 'ericdoering',
   host: 'localhost',
-  database: 'routes',
+  database: 'project_positive',
   password: '',
   port: 5432,
 });

@@ -1,6 +1,7 @@
 import express from "express";
 import pool from "../database/db";
-import { randomMessage } from "../utilities/messageGenerator"
+
+
 
 const app = express();
 
@@ -9,13 +10,20 @@ pool.connect().then(client => {
 });
 
 
-app.listen(3000, () => {
-    console.log("server is listening on port 3000...")
+app.listen(3456, () => {
+    console.log("server is listening on port 3456...")
 })
 
-console.log(randomMessage)
+app.use(express.json());
 
-app.get('/', (req, res)=>{
+app.get('/', (req, res)=> {
     res.status(200);
     res.send("Welcome to root URL of Server");
 });
+
+
+app.post("/register", (req, res) => {
+    console.log(req.body);
+    res.status(200);
+})
+
