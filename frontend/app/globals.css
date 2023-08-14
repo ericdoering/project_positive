@@ -102,3 +102,27 @@ body::before{
   width: 40rem;
   margin-bottom: 1rem;
 }
+
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-15px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(15px);
+  }
+}
+
+.svg-container {
+  width: 100px; /* Set your desired width */
+  height: 100px; /* Set your desired height */
+  animation: shake 15s infinite; /* Adjust the duration and iteration as needed */
+}
+
+
+.phone {
+  transform: rotate(10deg);
+}

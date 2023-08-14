@@ -2,13 +2,9 @@
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { ReviewForms } from "./ReviewForms";
-import { User } from "@/register/page";
 import { MessageHelp } from "./MessageHelp";
+import { Props } from  "../types/Props";
 
-type Props = {
-  user: User;
-  setUser: (user: User) => void;
-}
 
 export function MessageForm({user, setUser}: Props): JSX.Element{
     const [messagesSelected, setMessagesSelected] = useState<string[]>([]);

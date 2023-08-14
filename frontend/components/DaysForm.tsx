@@ -2,12 +2,7 @@
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { TimeForm } from "./TimeForm";
-import { type User } from "../app/register/page"
-
-type Props = {
-    user: User;
-    setUser: (user: User) => void;
-}
+import { Props } from  "../types/Props";
 
 export function DaysForm({user, setUser}: Props): JSX.Element{
     const [daysSelected, setDaysSelected] = useState<string[]>([]);
@@ -43,39 +38,39 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
                     <legend className="sr-only text-sm mb-4 pb-4">Select which day/days you would like to receive messages.</legend>
 
                         <div className="flex items-center mb-4">
-                            <input id="monday" type="checkbox" value="monday" checked={daysSelected.includes("monday")}
+                            <input id="Monday" type="checkbox" value="Monday" checked={daysSelected.includes("Monday")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="monday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Monday</label>
+                            <label htmlFor="Monday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Monday</label>
                         </div>
                         <div className="flex items-center mb-4">
-                            <input id="tuesday" type="checkbox" value="tuesday" checked={daysSelected.includes("tuesday")}
+                            <input id="Tuesday" type="checkbox" value="Tuesday" checked={daysSelected.includes("Tuesday")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="tuesday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Tuesday</label>
+                            <label htmlFor="Tuesday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Tuesday</label>
                         </div>
                         <div className="flex items-center mb-4">
-                            <input id="wednesday" type="checkbox" value="wednesday" checked={daysSelected.includes("wednesday")}
+                            <input id="Wednesday" type="checkbox" value="Wednesday" checked={daysSelected.includes("Wednesday")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="wednesday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Wednesday</label>
+                            <label htmlFor="Wednesday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Wednesday</label>
                         </div>
                         <div className="flex items-center mb-4">
-                            <input id="thursday" type="checkbox" value="thursday" checked={daysSelected.includes("thursday")}
+                            <input id="Thursday" type="checkbox" value="Thursday" checked={daysSelected.includes("Thursday")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="thursday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Thursday</label>
+                            <label htmlFor="Thursday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Thursday</label>
                         </div>
                         <div className="flex items-center mb-4">
-                            <input id="friday" type="checkbox" value="friday" checked={daysSelected.includes("friday")}
+                            <input id="Friday" type="checkbox" value="Friday" checked={daysSelected.includes("Friday")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="friday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Friday</label>
+                            <label htmlFor="Friday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Friday</label>
                         </div>
                         <div className="flex items-center mb-4">
-                            <input id="saturday" type="checkbox" value="saturday" checked={daysSelected.includes("saturday")}
+                            <input id="Saturday" type="checkbox" value="Saturday" checked={daysSelected.includes("Saturday")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="saturday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Saturday</label>
+                            <label htmlFor="Saturday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Saturday</label>
                         </div>
                         <div className="flex items-center mb-4">
-                            <input id="sunday" type="checkbox" value="sunday" checked={daysSelected.includes("sunday")}
+                            <input id="Sunday" type="checkbox" value="Sunday" checked={daysSelected.includes("Sunday")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="sunday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Sunday</label>
+                            <label htmlFor="Sunday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Sunday</label>
                         </div>
                 </fieldset>
                 <button

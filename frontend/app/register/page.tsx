@@ -2,23 +2,8 @@
 
 import { DaysForm } from "../../components/DaysForm";
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import { User } from "../../../frontend/types/User";
 
-export type User = {
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  days: string[];
-  time: {
-    hour: string;
-    minute: string;
-    timeOfDay: string;
-  };
-  Messages: {
-    Quotes: boolean;
-    Questions: boolean;
-    callsToAction: boolean;
-  };
-}
 
 
 export default function Register(): JSX.Element {
@@ -47,20 +32,10 @@ export default function Register(): JSX.Element {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     setUser({
+      ...user,
       firstName: firstName,
       lastName: lastName,
       phoneNumber: phoneNumber,
-      days: [], 
-      time: {
-        hour: '',
-        minute: '',
-        timeOfDay: '',
-      },
-      Messages: {
-        Quotes: false,
-        Questions: false,
-        callsToAction: false,
-      },
     })
     event.preventDefault();
     setUserSubmit(true)

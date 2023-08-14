@@ -3,18 +3,12 @@
 import React, { useState } from 'react';
 import { MessageForm } from "./MessageForm"
 import { formatTime } from "../utilities/time_formater"
-import { User } from '@/register/page';
+import { Props } from  "../types/Props";
 
 type Option = {
   value: string;
   label: string;
 };
-
-type Props = {
-  user: User;
-  setUser: (user: User) => void;
-}
-
 
 const hour: Option[] = [
   { value: "1:00", label: "1:00" },

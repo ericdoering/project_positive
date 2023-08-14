@@ -2,27 +2,25 @@
 
 import axios from "axios";
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { User } from '@/register/page';
-
-  type Props = {
-    user: User;
-    setUser: (user: User) => void;
-  }
+import { Props } from  "../types/Props";
+import { SubmitPage } from "./SubmitPage";
   
   
   export function ReviewForms({user}: Props): JSX.Element {
+    const [submit, setSubmit] = useState(false)
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setSubmit(true);
         return await axios.post(`http://localhost:3456/register`, user)
       };
 
 
     return (
       <>
+      {submit ? null : 
         <div className="flex items-center flex-col justify-center my-32">
-
-        <div className="review-heading font-bold mb-2">Review Information</div>
+            <div className="review-heading font-bold mb-2">Review Information</div>
 
 
                 <div className="rounded bg-gray-100 shadow-lg review-form">
@@ -97,7 +95,11 @@ import { User } from '@/register/page';
                     >
                     Submit
                     </button>
-                </form>
+                </form> 
+                </div>
+                }
+            <div>
+                {submit ? <SubmitPage /> : null}
             </div>
       </>
     );
