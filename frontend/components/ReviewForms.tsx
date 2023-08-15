@@ -4,9 +4,13 @@ import axios from "axios";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Props } from  "../types/Props";
 import { SubmitPage } from "./SubmitPage";
+import useHistory, { Navigate } from "react-router-dom";
+import { MessageForm } from "./MessageForm";
+import Link from "next/link";
+import { DaysForm } from "./DaysForm";
   
   
-  export function ReviewForms({user}: Props): JSX.Element {
+  export function ReviewForms({user, setUser}: Props): JSX.Element {
     const [submit, setSubmit] = useState(false)
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -14,7 +18,7 @@ import { SubmitPage } from "./SubmitPage";
         setSubmit(true);
         return await axios.post(`http://localhost:3456/register`, user)
       };
-
+      
 
     return (
       <>
@@ -81,6 +85,7 @@ import { SubmitPage } from "./SubmitPage";
                         return null;
                     })}
                 </div>
+
                 <button
                     className="btn-wth bg-indigo-700 text-white active:bg-violet-600 text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
                 >

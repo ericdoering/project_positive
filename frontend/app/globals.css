@@ -126,3 +126,11 @@ body::before{
 .phone {
   transform: rotate(10deg);
 }
+
+.marg-sm {
+  margin-bottom: 2px;
+}
+
+.marg-bg {
+  margin-top: 20px;
+}

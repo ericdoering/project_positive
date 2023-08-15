@@ -26,6 +26,7 @@ const hour: Option[] = [
 ];
 
 const minute: Option[] = [
+  { value: "0:00", label: "0:00" },
   { value: "0:15", label: "0:15" },
   { value: "0:30", label: "0:30" },
   { value: "0:45", label: "0:45" },
@@ -84,7 +85,7 @@ export const TimeForm = ({user, setUser}: Props) => {
             <div>
           <h2>Select Time to Receive Texts</h2>
         </div>
-        <form onSubmit={handleSubmit} className="mt-10 inline-block">
+        <form onSubmit={handleSubmit} className="marg-bg inline-block">
             <div className="flex justify-center space-x-4">
               <div>
                 <label htmlFor="formOption1" className="block">
@@ -92,6 +93,7 @@ export const TimeForm = ({user, setUser}: Props) => {
                 </label>
                 <div className="relative inline-block">
                   <select
+                    required
                     id="formOption1"
                     className="appearance-none bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     value={selectedOption1?.value || ""}
@@ -125,6 +127,7 @@ export const TimeForm = ({user, setUser}: Props) => {
                 </label>
                 <div className="relative inline-block">
                   <select
+                    required
                     id="formOption2"
                     className="appearance-none bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     value={selectedOption2?.value || ""}
@@ -158,6 +161,7 @@ export const TimeForm = ({user, setUser}: Props) => {
                 </label>
                 <div className="relative inline-block">
                   <select
+                    required
                     id="formOption3"
                     className="appearance-none bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     value={selectedOption3?.value || ""}
@@ -187,7 +191,7 @@ export const TimeForm = ({user, setUser}: Props) => {
             </div>
             <button
                     type="submit"
-                    className="mt-4 text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="marg-bg mt-4 text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                  Submit
             </button>

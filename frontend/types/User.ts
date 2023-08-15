@@ -12,6 +12,6 @@ export type User = {
     Messages: {
       Quotes: boolean;
       Questions: boolean;
-      callsToAction: boolean;
+      "Calls to Action": boolean;
     };
   };

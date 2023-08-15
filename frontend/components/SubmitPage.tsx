@@ -7,8 +7,8 @@ export function SubmitPage(): JSX.Element {
                 <div className="flex flex-col items-center justify-center card-container review-form">
                     <div className="p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Successfully Submitted</h5>
-                        <p>You have now successfully setup your Project Positive automated messaging
-                        expect to begin recieving texts! You are now on your way to building a strong mental health practice.
+                        <p>You have now successfully setup your Project Positive automated messaging.
+                        Expect to begin recieving texts! You are now on your way to building a strong mental health practice.
                         </p>
                         <div className="flex items-center justify-center">
                             <div className="svg-container">

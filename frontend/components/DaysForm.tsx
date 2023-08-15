@@ -35,9 +35,9 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
             <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
                 <form onSubmit={handleSubmit}>
                 <fieldset className="mb-4">
-                    <legend className="sr-only text-sm mb-4 pb-4">Select which day/days you would like to receive messages.</legend>
+                    <legend className="sr-only text-sm pb-4">Select which day/days you would like to receive messages.</legend>
 
-                        <div className="flex items-center mb-4">
+                        <div className="flex items-center mb-4 marg-bg">
                             <input id="Monday" type="checkbox" value="Monday" checked={daysSelected.includes("Monday")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             <label htmlFor="Monday" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Monday</label>
@@ -75,7 +75,7 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
                 </fieldset>
                 <button
                     type="submit"
-                    className="text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="marg-bg text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                  Submit
                 </button>
