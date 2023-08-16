@@ -14,8 +14,8 @@ body::before{
   position: absolute; 
   top: 0;
   left: 0;
-  width: 500%;
-  height: 300%;
+  width: 100%;
+  height: 500%;
   background-image: url("../assets/main_background.png");
   z-index: -1;
   opacity: 0.5; 
@@ -133,4 +133,12 @@ body::before{
 
 .marg-bg {
   margin-top: 20px;
+}
+
+.msg-exp {
+  border-radius: 100px;
+}
+
+.anti-warp {
+    object-fit: cover;
 }
