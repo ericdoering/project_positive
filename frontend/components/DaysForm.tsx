@@ -3,6 +3,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { TimeForm } from "./TimeForm";
 import { Props } from  "../types/Props";
+import Link from 'next/link'
 
 export function DaysForm({user, setUser}: Props): JSX.Element{
     const [daysSelected, setDaysSelected] = useState<string[]>([]);
@@ -83,7 +84,7 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
         </div>
         </div>
         }
-        <div>
+        <div>  
             {daysSubmit ? <TimeForm user={user} setUser={setUser} /> : null}
         </div>
     </>

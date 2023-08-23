@@ -142,3 +142,8 @@ body::before{
 .anti-warp {
     object-fit: cover;
 }
+
+
+.reg-inst {
+  width: 40%
+}

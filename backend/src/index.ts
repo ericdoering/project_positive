@@ -1,6 +1,7 @@
 import express from "express";
 import pool from "../database/db";
 import bodyParser from "body-parser";
+import { convertTimeToTimestamp } from "../utilities/convertTimeToTimestamp"
 
 
 
@@ -22,26 +23,43 @@ app.get('/', (req, res)=> {
     res.send("Welcome to root URL of Server");
 });
 
-// Middleware to parse JSON body
 app.use(bodyParser.json());
+
+
+
+
+
+
+
+
+let messageId = 1
+let userId = 1
 
 
 app.post("/register", async (req, res) => {
 
 try {
 
-    const Userpayload  = [
+    const userPayload  = [
         req.body.firstName,
         req.body.lastName,
         req.body.phoneNumber,
     ];
 
+    let unConvertedTime = req.body.time.hour[0] + req.body.time.minute.slice(1, 4) + " " + req.body.time.timeOfDay
+    let convertedTime = convertTimeToTimestamp(unConvertedTime)
+
+    console.log(convertedTime)
+
     const messagePayload = [
-        req.body.days,
-        req.body.time,
-        req.body.Messages
+        req.body.days[0],
+        convertedTime,
+        req.body.Messages.Quotes,
+        req.body.Messages['Calls to Action'],
+        req.body.Messages.Questions 
     ];
 
+    
 
 
     // if (!payload) {
@@ -54,8 +72,10 @@ try {
     // Insert data into the database within a transaction
     try {
       await client.query('BEGIN');
-      const query = 'INSERT INTO users (first_name, last_name, phone_number, is_active) VALUES ($1, $2, $3, true);';
-      await client.query(query, Userpayload);
+      const userQuery = 'INSERT INTO users (first_name, last_name, phone_number, is_active) VALUES ($1, $2, $3, true);'
+      const messageQuery = "INSERT INTO messages (day, send_time, quotes, calls_to_action, gratitude_questions) VALUES ($1, $2, $3, $4, $5);"
+      await client.query(userQuery, userPayload);
+      await client.query(messageQuery, messagePayload)
       await client.query('COMMIT');
     } catch (error) {
       await client.query('ROLLBACK');
@@ -71,6 +91,7 @@ try {
     res.status(500).json({ error: 'An error occurred while adding data.' });
   }
 });
+
 
 
 
