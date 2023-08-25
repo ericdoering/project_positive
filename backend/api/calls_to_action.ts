@@ -13,5 +13,8 @@ export const callsToAction = [
     ["Text a friend or family member."],
     ["Go fix yourself a healthy snack."],
     ["Correct your current posture and situp straight."],
-    ["Do something that pushes you out of your comfort zone."]
+    ["Do something that pushes you out of your comfort zone."],
+    ["Meditate for 2 minutes"],
+    ["Go look out of the window."],
+    ["Do 3 big sighs"]
 ];

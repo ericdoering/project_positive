@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { MessageForm } from "./MessageForm"
-import { formatTime } from "../utilities/time_formater"
+import { formatTime } from "../utilities/time_formatter"
 import { Props } from  "../types/Props";
 
 type Option = {

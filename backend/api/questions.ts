@@ -11,5 +11,20 @@ export const questions = [
     ["What was a good song or podcast that you listened to recently?"],
     ["Who did you help recently?"],
     ["Who made you laugh or smile recently?"],
-    ["What are you grateful for?"]
+    ["What are you grateful for?"],
+    ["What made you laugh today?"],
+    ["What insight did I gain today?"],
+    ["What did I read or listen to today that added value to my life?"],
+    ["What activity did I most enjoy today?"],
+    ["What was one small victory I had today?"],
+    ["What skills did I use today?"],
+    ["How did I move an important goal forward today?"],
+    ["How did I feel appreciated today?"],
+    ["What opportunity presented itself today?"],
+    ["What was the silver lining to something that went wrong today?"],
+    ["What made me feel hopeful today?"],
+    ["What did I do today that was fun?"],
+    ["What positive things did I notice about my surroundings today?"],
+    ["What made me feel energized today?"],
+    ["What made me happy to be alive today?"]
 ]

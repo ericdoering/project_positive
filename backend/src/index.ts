@@ -1,7 +1,9 @@
 import express from "express";
 import pool from "../database/db";
 import bodyParser from "body-parser";
-import { convertTimeToTimestamp } from "../utilities/convertTimeToTimestamp"
+import { convertTimeToTimestamp } from "../utilities/convertTimeToTimestamp";
+import { generateRandomMessage } from "../utilities/messageGenerator";
+import { formatTime } from "../utilities/time_formatter";
 
 
 
@@ -28,6 +30,8 @@ app.use(bodyParser.json());
 
 
 
+console.log(generateRandomMessage())
+
 
 
 
@@ -46,10 +50,9 @@ try {
         req.body.phoneNumber,
     ];
 
-    let unConvertedTime = req.body.time.hour[0] + req.body.time.minute.slice(1, 4) + " " + req.body.time.timeOfDay
+    let unConvertedTime = formatTime(req.body.time.hour, req.body.time.minute, req.body.time.timeOfDay)
     let convertedTime = convertTimeToTimestamp(unConvertedTime)
 
-    console.log(convertedTime)
 
     const messagePayload = [
         req.body.days[0],
