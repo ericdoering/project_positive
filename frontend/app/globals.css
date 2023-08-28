@@ -147,3 +147,23 @@ body::before{
 .reg-inst {
   width: 40%
 }
+
+.landing {
+  background-color: rgba(17, 1, 44, 0.474);
+  padding-bottom: 15rem;
+  padding-top: 2rem;
+}
+
+.sm-ft {
+  font-size: 0.95rem;
+}
+
+.msg-examples-container {
+  margin-left: 16rem;
+  margin-right: 16rem;
+}
+
+.msg-examples {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

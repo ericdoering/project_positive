@@ -1,9 +1,11 @@
 import express from "express";
 import pool from "../database/db";
 import bodyParser from "body-parser";
+import { v4 as uuidv4 } from 'uuid';
 import { convertTimeToTimestamp } from "../utilities/convertTimeToTimestamp";
 import { generateRandomMessage } from "../utilities/messageGenerator";
 import { formatTime } from "../utilities/time_formatter";
+
 
 
 
@@ -30,14 +32,22 @@ app.use(bodyParser.json());
 
 
 
+
+
+
+
+
+
+
+
+
+
 console.log(generateRandomMessage())
 
 
+const userUUID = uuidv4();
+const msgUUID = uuidv4()
 
-
-
-let messageId = 1
-let userId = 1
 
 
 app.post("/register", async (req, res) => {
@@ -45,6 +55,7 @@ app.post("/register", async (req, res) => {
 try {
 
     const userPayload  = [
+        userUUID,
         req.body.firstName,
         req.body.lastName,
         req.body.phoneNumber,
@@ -55,6 +66,8 @@ try {
 
 
     const messagePayload = [
+        msgUUID,
+        userUUID,
         req.body.days[0],
         convertedTime,
         req.body.Messages.Quotes,
@@ -75,8 +88,8 @@ try {
     // Insert data into the database within a transaction
     try {
       await client.query('BEGIN');
-      const userQuery = 'INSERT INTO users (first_name, last_name, phone_number, is_active) VALUES ($1, $2, $3, true);'
-      const messageQuery = "INSERT INTO messages (day, send_time, quotes, calls_to_action, gratitude_questions) VALUES ($1, $2, $3, $4, $5);"
+      const userQuery = 'INSERT INTO users (id, first_name, last_name, phone_number, is_active) VALUES ($1, $2, $3, $4, true);'
+      const messageQuery = "INSERT INTO messages (id, user_id, day, send_time, quotes, calls_to_action, gratitude_questions) VALUES ($1, $2, $3, $4, $5, $6, $7);"
       await client.query(userQuery, userPayload);
       await client.query(messageQuery, messagePayload)
       await client.query('COMMIT');

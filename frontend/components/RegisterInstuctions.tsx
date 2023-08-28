@@ -15,7 +15,7 @@ export function RegisterInstructions(): JSX.Element {
                 </div>
                 <div className="p-6">
                     <h5
-                    className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                    className="marg-bg sm-ft font-medium leading-tight text-neutral-800 dark:text-neutral-50">
                     Fill out your first name, last name and cell phone number.
                     </h5>
                 </div>
@@ -27,7 +27,7 @@ export function RegisterInstructions(): JSX.Element {
                 </div>
                 <div className="p-6">
                     <h5
-                    className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                    className="mb-2 sm-ft font-medium leading-tight text-neutral-800 dark:text-neutral-50">
                     Select which days and times you would like to recieve messages.
                     </h5>
                 </div>
@@ -39,7 +39,7 @@ export function RegisterInstructions(): JSX.Element {
                 </div>
                 <div className="p-6">
                     <h5
-                    className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                    className="mb-2 sm-ft font-medium leading-tight text-neutral-800 dark:text-neutral-50">
                     Select the types of message you would like to recieve.
                     </h5>
                 </div>
@@ -51,7 +51,7 @@ export function RegisterInstructions(): JSX.Element {
                 </div>
                 <div className="p-6">
                     <h5
-                    className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                    className="mb-2 sm-ft font-medium leading-tight text-neutral-800 dark:text-neutral-50">
                     Submit the form and begin recieving graditude messages and begin building a mental health practice.
                     </h5>
                 </div>
