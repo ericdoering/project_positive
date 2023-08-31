@@ -68,7 +68,7 @@ try {
     const messagePayload = [
         msgUUID,
         userUUID,
-        req.body.days[0],
+        req.body.days,
         convertedTime,
         req.body.Messages.Quotes,
         req.body.Messages['Calls to Action'],
@@ -78,28 +78,57 @@ try {
     
 
 
-    // if (!payload) {
-    //   return res.status(400).json({ error: 'Payload is required.' });
-    // }
-
-    // Acquire a client from the pool
     const client = await pool.connect();
 
-    // Insert data into the database within a transaction
     try {
       await client.query('BEGIN');
       const userQuery = 'INSERT INTO users (id, first_name, last_name, phone_number, is_active) VALUES ($1, $2, $3, $4, true);'
       const messageQuery = "INSERT INTO messages (id, user_id, day, send_time, quotes, calls_to_action, gratitude_questions) VALUES ($1, $2, $3, $4, $5, $6, $7);"
       await client.query(userQuery, userPayload);
-      await client.query(messageQuery, messagePayload)
+
+
+
+
+
+      const days = req.body.days; 
+
+    days.forEach((day: "string") => {
+      const values = [
+        uuidv4(), 
+        messagePayload[1], 
+        day,            
+        messagePayload[3], 
+        messagePayload[4], 
+        messagePayload[5], 
+        messagePayload[6]  
+      ];
+
+      client.query(messageQuery, values, (err, result) => {
+        if (err) {
+          console.error(`Error inserting data for ${day}:`, err);
+        } else {
+          console.log(`Data inserted for ${day}`);
+        }
+    });
+  });
+
+
+
+
+
+
+
       await client.query('COMMIT');
     } catch (error) {
       await client.query('ROLLBACK');
       throw error;
     } finally {
-      // Release the client back to the pool
+
       client.release();
     }
+
+    
+
 
     res.status(201).json({ message: 'Data added successfully.' });
   } catch (error) {

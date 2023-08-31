@@ -26,7 +26,7 @@ export default function Register(): JSX.Element {
     Messages: {
       Quotes: false,
       Questions: false,
-      callsToAction: false,
+      "Calls to Action": false,
     },
   });
 

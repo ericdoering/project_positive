@@ -150,7 +150,7 @@ body::before{
 
 .landing {
   background-color: rgba(17, 1, 44, 0.474);
-  padding-bottom: 15rem;
+  padding-bottom: 10rem;
   padding-top: 2rem;
 }
 
@@ -166,4 +166,10 @@ body::before{
 .msg-examples {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.main-title {
+  font-size: 3.0rem;
+  font-weight: 700;
+  color: rgb(21, 20, 22);
 }

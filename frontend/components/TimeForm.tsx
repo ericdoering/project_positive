@@ -197,7 +197,9 @@ export const TimeForm = ({user, setUser}: Props) => {
             </button>
           </form>
           <div className="flex flex-row justify-center bg-gray-100">
-                <span className="text-center">{time}</span>
+          {selectedOption1 === null ? "" : <span className="text-center">{time.slice(0,2)}</span>}
+          {selectedOption2 === null ? "" : <span className="text-center">{time.slice(2, 5)}</span>}
+          {selectedOption3 === null ? "" : <span className="text-center">{time.slice(5, time.length)}</span>}
           </div>
         </div>
         </div>
