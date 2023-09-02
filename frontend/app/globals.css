@@ -173,3 +173,13 @@ body::before{
   font-weight: 700;
   color: rgb(21, 20, 22);
 }
+
+.time {
+  margin-top: 2.0rem;
+  font-size: 1.5rem;
+  background-color: #fafafb;
+}
+
+.vry-sm-font {
+  font-size: 0.85rem;
+}
