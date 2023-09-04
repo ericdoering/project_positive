@@ -183,3 +183,13 @@ body::before{
 .vry-sm-font {
   font-size: 0.85rem;
 }
+
+.avd-clip {
+  z-index: 2;
+}
+
+.loading {
+  text-align:center;
+  margin-top: 2.0rem;
+  font-size: 5.0rem;
+}

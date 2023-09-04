@@ -1,8 +1,9 @@
 "use client";
-
 import { DaysForm } from "../../components/DaysForm";
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useContext } from "react";
 import { User } from "../../../frontend/types/User";
+import { useRouter } from 'next/navigation';
+import { UserContext } from "@/context";
 
 
 
@@ -11,24 +12,9 @@ export default function Register(): JSX.Element {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [userSubmit, setUserSubmit] = useState(false);
+  const router = useRouter();
+  const {user, setUser} = useContext(UserContext);
 
-
-  const [user, setUser] = useState<User>({
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    days: [], 
-    time: {
-      hour: '',
-      minute: '',
-      timeOfDay: '',
-    },
-    Messages: {
-      Quotes: false,
-      Questions: false,
-      "Calls to Action": false,
-    },
-  });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     setUser({
@@ -38,10 +24,11 @@ export default function Register(): JSX.Element {
       phoneNumber: phoneNumber,
     })
     event.preventDefault();
-    setUserSubmit(true)
+    setUserSubmit(true);
     setFirstName("");
     setLastName("");
     setPhoneNumber("");
+    router.push('/register/days');
   };
 
   const handleFirstNameChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +46,7 @@ export default function Register(): JSX.Element {
   return (
   <>
   {userSubmit ? null : 
-  <div className="flex items-center justify-center my-32">
+  <div className="flex items-center justify-center my-32 testing-div">
     <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
   <form className="border-indigo-600" onSubmit={handleSubmit}>
     <div className="grid md:flex-col">
@@ -76,7 +63,7 @@ export default function Register(): JSX.Element {
         />
         <label
           htmlFor="floating_first_name"
-          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          className="avd-clip peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
         >
           First name
         </label>
@@ -94,7 +81,7 @@ export default function Register(): JSX.Element {
         />
         <label
           htmlFor="floating_last_name"
-          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          className="avd-clip peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
         >
           Last name
         </label>
@@ -113,7 +100,7 @@ export default function Register(): JSX.Element {
         />
         <label
           htmlFor="floating_phone"
-          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          className="avd-clip peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
         >
           Phone number (123-456-7890)
         </label>
@@ -129,9 +116,9 @@ export default function Register(): JSX.Element {
 </div>
 </div>
 }
-<div>
+    {/* <div>
     {userSubmit ? <DaysForm user={user} setUser={setUser} /> : null}
-  </div>
+    </div> */}
 </>
   );
 }

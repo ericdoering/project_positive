@@ -8,21 +8,25 @@ import useHistory, { Navigate } from "react-router-dom";
 import { MessageForm } from "./MessageForm";
 import Link from "next/link";
 import { DaysForm } from "./DaysForm";
+import { useRouter } from 'next/navigation';
   
   
   export function ReviewForms({user, setUser}: Props): JSX.Element {
-    const [submit, setSubmit] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+    
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setSubmit(true);
-        return await axios.post(`http://localhost:3456/register`, user)
+        router.push('/register/success');
+        setLoading(true);
+        await axios.post(`http://localhost:3456/register`, user)
       };
       
 
     return (
       <>
-      {submit ? null : 
+      {loading ? null : 
         <div className="flex items-center flex-col justify-center my-32">
             <div className="review-heading font-bold mb-2">Review Information</div>
 
@@ -104,7 +108,7 @@ import { DaysForm } from "./DaysForm";
                 </div>
                 }
             <div>
-                {submit ? <SubmitPage /> : null}
+                {loading ? "...loading" : null}
             </div>
       </>
     );

@@ -4,11 +4,13 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import { ReviewForms } from "./ReviewForms";
 import { MessageHelp } from "./MessageHelp";
 import { Props } from  "../types/Props";
+import { useRouter } from 'next/navigation';
 
 
 export function MessageForm({user, setUser}: Props): JSX.Element{
     const [messagesSelected, setMessagesSelected] = useState<string[]>([]);
-    const [messagesSubmit, setMessagesSubmit] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
       const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -21,7 +23,8 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
           },
         })
         setMessagesSelected([]); 
-        setMessagesSubmit(true);
+        setLoading(true);
+        router.push('/register/review');
       };
 
       const handleDayChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +39,7 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
       
     return (
         <>
-        {messagesSubmit ? null : 
+        {loading ? null : 
         <div className="flex items-center justify-center my-32">
             <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
                 <form onSubmit={handleSubmit}>
@@ -71,8 +74,8 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
         </div>
         </div>
         }
-        <div>
-        {messagesSubmit ? <ReviewForms user={user} setUser={setUser} /> : null}
+        <div className="loading">  
+            {loading ? "...Loading" : null}
         </div>
     </>
     )

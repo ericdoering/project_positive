@@ -3,11 +3,13 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { TimeForm } from "./TimeForm";
 import { Props } from  "../types/Props";
+import { useRouter } from 'next/navigation';
 import Link from 'next/link'
 
 export function DaysForm({user, setUser}: Props): JSX.Element{
     const [daysSelected, setDaysSelected] = useState<string[]>([]);
-    const [daysSubmit, setDaysSubmit] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
       const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -17,7 +19,8 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
           })
 
         setDaysSelected([]);
-        setDaysSubmit(true);
+        setLoading(true);
+        router.push('/register/time');
       };
 
       const handleDayChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +34,7 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
 
     return (
         <>
-        {daysSubmit ? null : 
+        {loading ? null : 
         <div className="flex items-center justify-center my-32">
             <div className="bg-gray-100 p-10 rounded form-size shadow-lg">
                 <form onSubmit={handleSubmit}>
@@ -84,8 +87,8 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
         </div>
         </div>
         }
-        <div>  
-            {daysSubmit ? <TimeForm user={user} setUser={setUser} /> : null}
+        <div className="loading">  
+            {loading ? "...Loading" : null}
         </div>
     </>
     )

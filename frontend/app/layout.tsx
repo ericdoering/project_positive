@@ -1,13 +1,18 @@
+
 import Link from 'next/link'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import Context from './context';
+import { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
+/*
+export const metadata: Metadata = {
   title: 'Project Positive',
   description: 'The mental health and graditude app',
 }
+*/
 
 export default function RootLayout({
   children,
@@ -29,7 +34,9 @@ export default function RootLayout({
             </Link>
             </div>
           </nav>
-        {children}
+          <Context>
+            {children}
+          </Context>
         </main>
       </body>
     </html>

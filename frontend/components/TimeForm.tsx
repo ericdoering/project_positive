@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { MessageForm } from "./MessageForm"
 import { formatTime } from "../utilities/time_formatter"
 import { Props } from  "../types/Props";
+import { useRouter } from 'next/navigation';
 
 type Option = {
   value: string;
@@ -41,7 +42,8 @@ export const TimeForm = ({user, setUser}: Props) => {
   const [selectedOption1, setSelectedOption1] = useState<Option | null>(null);
   const [selectedOption2, setSelectedOption2] = useState<Option | null>(null);
   const [selectedOption3, setSelectedOption3] = useState<Option | null>(null);
-  const [timeSubmit, setTimeSubmit] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
 
   const handleOption1Change = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -64,7 +66,7 @@ export const TimeForm = ({user, setUser}: Props) => {
 
   const handleSubmit = async (evt: React.FormEvent<HTMLFormElement>): Promise<void> => {
     evt.preventDefault();
-    setTimeSubmit(true);
+    setLoading(true);
     setUser({
       ...user,
       time: {
@@ -73,13 +75,14 @@ export const TimeForm = ({user, setUser}: Props) => {
         timeOfDay: selectedOption3?.value as string,
       },
     })
+    router.push('/register/messages');
   };
 
   const time = formatTime(selectedOption1?.value!, selectedOption2?.value!, selectedOption3?.value!)
 
   return (
       <>
-      {timeSubmit ? null : 
+      {loading ? null : 
         <div className="flex items-center justify-center my-32">
         <div className="bg-gray-100 p-10 rounded form-size shadow-lg mt-10">
             <div>
@@ -204,8 +207,8 @@ export const TimeForm = ({user, setUser}: Props) => {
         </div>
         </div>
         }
-        <div>
-            {timeSubmit ? <MessageForm user={user} setUser={setUser}  /> : null}
+        <div className="loading">  
+            {loading ? "...Loading" : null}
         </div>
       </>
   );
