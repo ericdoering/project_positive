@@ -9,6 +9,7 @@ import { MessageForm } from "./MessageForm";
 import Link from "next/link";
 import { DaysForm } from "./DaysForm";
 import { useRouter } from 'next/navigation';
+import { Loader } from "./Loader";
   
   
   export function ReviewForms({user, setUser}: Props): JSX.Element {
@@ -111,8 +112,8 @@ import { useRouter } from 'next/navigation';
                 </form> 
                 </div>
                 }
-            <div>
-                {loading ? "...loading" : null}
+            <div className="loading">  
+                {loading ? <Loader /> : null}
             </div>
       </>
     );

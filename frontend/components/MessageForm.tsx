@@ -5,6 +5,7 @@ import { ReviewForms } from "./ReviewForms";
 import { MessageHelp } from "./MessageHelp";
 import { Props } from  "../types/Props";
 import { useRouter } from 'next/navigation';
+import { Loader } from "./Loader";
 
 
 export function MessageForm({user, setUser}: Props): JSX.Element{
@@ -75,7 +76,7 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
         </div>
         }
         <div className="loading">  
-            {loading ? "...Loading" : null}
+            {loading ? <Loader /> : null}
         </div>
     </>
     )

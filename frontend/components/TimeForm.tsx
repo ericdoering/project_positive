@@ -5,6 +5,7 @@ import { MessageForm } from "./MessageForm"
 import { formatTime } from "../utilities/time_formatter"
 import { Props } from  "../types/Props";
 import { useRouter } from 'next/navigation';
+import { Loader } from './Loader';
 
 type Option = {
   value: string;
@@ -207,8 +208,8 @@ export const TimeForm = ({user, setUser}: Props) => {
         </div>
         </div>
         }
-        <div className="loading">  
-            {loading ? "...Loading" : null}
+         <div className="loading">  
+            {loading ? <Loader /> : null}
         </div>
       </>
   );

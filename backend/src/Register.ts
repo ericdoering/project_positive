@@ -6,7 +6,6 @@ import { formatTime } from "../utilities/time_formatter";
 
 
 const router = express.Router();
-const userUUID = uuidv4();
 const msgUUID = uuidv4()
 
 
@@ -14,7 +13,7 @@ const msgUUID = uuidv4()
 router.post("/register", async (req, res) => {
 
 try {
-
+    const userUUID = uuidv4();
     const userPayload  = [
         userUUID,
         req.body.firstName,
@@ -27,11 +26,11 @@ try {
 
 
     const messagePayload = [
-        msgUUID,
+        uuidv4(),
         userUUID,
         req.body.days,
         convertedTime,
-        req.body.Messages.Quotes,
+        req.body.Messages.Quotes, 
         req.body.Messages['Calls to Action'],
         req.body.Messages.Questions 
     ];

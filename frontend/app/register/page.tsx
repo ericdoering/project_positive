@@ -5,7 +5,7 @@ import { Props } from "types/Props";
 import { User } from "../../../frontend/types/User";
 import { useRouter } from 'next/navigation';
 import { UserContext } from "@/context";
-import { Turret_Road } from "next/font/google";
+import { Loader } from "components/Loader";
 
 
 
@@ -121,7 +121,7 @@ export default function Register(): JSX.Element {
 </div>
   }
     <div className="loading">  
-            {loading ? "...Loading" : null}
+            {loading ? <Loader /> : null}
     </div>
 </>
   );
