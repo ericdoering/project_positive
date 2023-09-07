@@ -1,9 +1,11 @@
 "use client";
 import { DaysForm } from "../../components/DaysForm";
 import React, { useState, ChangeEvent, FormEvent, useContext } from "react";
+import { Props } from "types/Props";
 import { User } from "../../../frontend/types/User";
 import { useRouter } from 'next/navigation';
 import { UserContext } from "@/context";
+import { Turret_Road } from "next/font/google";
 
 
 
@@ -12,6 +14,7 @@ export default function Register(): JSX.Element {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [userSubmit, setUserSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {user, setUser} = useContext(UserContext);
 
@@ -25,10 +28,11 @@ export default function Register(): JSX.Element {
     })
     event.preventDefault();
     setUserSubmit(true);
+    setLoading(true);
     setFirstName("");
     setLastName("");
     setPhoneNumber("");
-    router.push('/register/days');
+    router.push('/register/days')
   };
 
   const handleFirstNameChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -115,10 +119,10 @@ export default function Register(): JSX.Element {
   </form>
 </div>
 </div>
-}
-    {/* <div>
-    {userSubmit ? <DaysForm user={user} setUser={setUser} /> : null}
-    </div> */}
+  }
+    <div className="loading">  
+            {loading ? "...Loading" : null}
+    </div>
 </>
   );
 }
