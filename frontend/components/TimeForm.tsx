@@ -92,20 +92,20 @@ export const TimeForm = ({user, setUser}: Props) => {
         <form onSubmit={handleSubmit} className="marg-bg inline-block">
             <div className="flex justify-center space-x-4">
               <div>
-                <label htmlFor="formOption1" className="block">
+                <label htmlFor="formOption1" className="text-center block">
                   Select Hour
                 </label>
                 <div className="relative inline-block">
                   <select
                     required
                     id="formOption1"
-                    className="appearance-none bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                    className="marg-rt appearance-none bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     value={selectedOption1?.value || ""}
                     onChange={handleOption1Change}
                   >
                     <option value="">Select an option</option>
                     {hour.map((option) => (
-                      <option key={option.value} value={option.value}>
+                      <option className="text-center" key={option.value} value={option.value}>
                         {option.label}
                       </option>
                     ))}
@@ -126,20 +126,20 @@ export const TimeForm = ({user, setUser}: Props) => {
               </div>
 
               <div>
-                <label htmlFor="formOption2" className="block">
+                <label htmlFor="formOption2" className="text-center block">
                   Select Minute
                 </label>
                 <div className="relative inline-block">
                   <select
                     required
                     id="formOption2"
-                    className="appearance-none bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                    className="marg-rt appearance-none bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     value={selectedOption2?.value || ""}
                     onChange={handleOption2Change}
                   >
                     <option value="">Select an option</option>
                     {minute.map((option) => (
-                      <option key={option.value} value={option.value}>
+                      <option className="text-center" key={option.value} value={option.value}>
                         {option.label}
                       </option>
                     ))}
@@ -160,7 +160,7 @@ export const TimeForm = ({user, setUser}: Props) => {
               </div>
 
               <div>
-                <label htmlFor="formOption3" className="block">
+                <label htmlFor="formOption3" className="text-center block">
                   Select AM or PM
                 </label>
                 <div className="relative inline-block">
@@ -173,7 +173,7 @@ export const TimeForm = ({user, setUser}: Props) => {
                   >
                     <option value="">Select an option</option>
                     {timeOfDay.map((option) => (
-                      <option key={option.value} value={option.value}>
+                      <option className="text-center" key={option.value} value={option.value}>
                         {option.label}
                       </option>
                     ))}
