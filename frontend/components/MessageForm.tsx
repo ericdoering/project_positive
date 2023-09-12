@@ -1,14 +1,21 @@
 "use client";
 
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useContext } from "react";
 import { ReviewForms } from "./ReviewForms";
 import { MessageHelp } from "./MessageHelp";
 import { Props } from  "../types/Props";
 import { useRouter } from 'next/navigation';
 import { Loader } from "./Loader";
+import { UserContext } from "@/context";
 
 
 export function MessageForm({user, setUser}: Props): JSX.Element{
+  const { edit, setEditing } = useContext(UserContext);
+
+  const handleToggleEditing = () => {
+    setEditing(true);
+  };
+
     const [messagesSelected, setMessagesSelected] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
@@ -25,6 +32,7 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
         })
         setMessagesSelected([]); 
         setLoading(true);
+        handleToggleEditing()
         router.push('/register/review');
       };
 

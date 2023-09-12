@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { MessageForm } from "./MessageForm"
 import { formatTime } from "../utilities/time_formatter"
 import { Props } from  "../types/Props";
 import { useRouter } from 'next/navigation';
 import { Loader } from './Loader';
+import { UserContext } from '@/context';
 
 type Option = {
   value: string;
@@ -40,6 +41,7 @@ const timeOfDay: Option[] = [
 ];
 
 export const TimeForm = ({user, setUser}: Props) => {
+  const { edit } = useContext(UserContext);
   const [selectedOption1, setSelectedOption1] = useState<Option | null>(null);
   const [selectedOption2, setSelectedOption2] = useState<Option | null>(null);
   const [selectedOption3, setSelectedOption3] = useState<Option | null>(null);
@@ -76,7 +78,7 @@ export const TimeForm = ({user, setUser}: Props) => {
         timeOfDay: selectedOption3?.value as string,
       },
     })
-    router.push('/register/messages');
+    edit ? router.push('/register/review') : router.push('/register/messages')
   };
 
   const time = formatTime(selectedOption1?.value!, selectedOption2?.value!, selectedOption3?.value!)

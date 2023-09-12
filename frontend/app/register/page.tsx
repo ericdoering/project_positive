@@ -16,7 +16,7 @@ export default function Register(): JSX.Element {
   const [userSubmit, setUserSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const {user, setUser} = useContext(UserContext);
+  const {user, setUser, edit} = useContext(UserContext);
 
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -32,7 +32,7 @@ export default function Register(): JSX.Element {
     setFirstName("");
     setLastName("");
     setPhoneNumber("");
-    router.push('/register/days')
+    edit ? router.push('/register/review') : router.push('/register/days')
   };
 
   const handleFirstNameChange = (event: ChangeEvent<HTMLInputElement>) => {

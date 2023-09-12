@@ -1,4 +1,5 @@
 "use client";
+
 import './globals.css'
 import { useState, createContext, Dispatch, SetStateAction } from 'react';
 import { User } from 'types/User';
@@ -7,6 +8,8 @@ import { User } from 'types/User';
 type UserContextData = {
   user: User;
   setUser: Dispatch<SetStateAction<User>>;
+  edit: boolean
+  setEditing: Dispatch<SetStateAction<boolean>>;
 }
 
 export const UserContext = createContext<UserContextData>({
@@ -26,7 +29,10 @@ export const UserContext = createContext<UserContextData>({
       "Calls to Action": false,
     },
   },
-  setUser: function (value: SetStateAction<User>): void {}
+  setUser: function (value: SetStateAction<User>): void {},
+  edit: false, 
+  setEditing: () => {}, 
+
 });
 
 export default function Context({
@@ -34,6 +40,8 @@ export default function Context({
 }: {
   children: React.ReactNode
 }) {
+
+  const [edit, setEditing] = useState<boolean>(false);
   const [user, setUser] = useState<User>({
     firstName: '',
     lastName: '',
@@ -53,7 +61,7 @@ export default function Context({
 
   return (
   <>
-    <UserContext.Provider value={{user, setUser}}>
+    <UserContext.Provider value={{user, setUser, edit, setEditing}}>
     {children}
     </UserContext.Provider>
   </>

@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useContext } from "react";
 import { TimeForm } from "./TimeForm";
 import { Props } from  "../types/Props";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link'
 import { Loader } from "./Loader";
+import { UserContext } from "@/context";
 
 export function DaysForm({user, setUser}: Props): JSX.Element{
+    const { edit } = useContext(UserContext);
     const [daysSelected, setDaysSelected] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
@@ -21,7 +23,7 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
 
         setDaysSelected([]);
         setLoading(true);
-        router.push('/register/time');
+        edit ? router.push('/register/review') : router.push('/register/time')
       };
 
       const handleDayChange = (event: ChangeEvent<HTMLInputElement>) => {
