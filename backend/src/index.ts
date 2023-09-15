@@ -5,8 +5,6 @@ import { generateRandomMessage } from "../utilities/messageGenerator";
 import { registerRouter } from "./Register";
 
 
-
-
 const app = express();
 
 pool.connect().then(client => {
@@ -26,8 +24,6 @@ app.get('/', (req, res)=> {
 });
 
 app.use(bodyParser.json());
-
-
 app.use(registerRouter)
 
 

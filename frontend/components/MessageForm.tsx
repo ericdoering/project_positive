@@ -57,17 +57,17 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
                         <div className="marg-bg flex items-center mb-4">
                             <input id="quotes" type="checkbox" value="quotes" checked={messagesSelected.includes("quotes")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="quotes" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Motivational Quotes</label>
+                            <label htmlFor="quotes" className="box-mgn text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Motivational Quotes</label>
                         </div>
                         <div className="flex items-center mb-4">
                             <input id="questions" type="checkbox" value="questions" checked={messagesSelected.includes("questions")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="questions" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Graditude Questions</label>
+                            <label htmlFor="questions" className="box-mgn text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Graditude Questions</label>
                         </div>
                         <div className="flex items-center mb-4">
                             <input id="actions" type="checkbox" value="actions" checked={messagesSelected.includes("actions")}
                             onChange={handleDayChange} className="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-300 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="actions" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Calls to Action</label>
+                            <label htmlFor="actions" className="box-mgn text-sm font-medium text-gray-900 dark:text-gray-300 ml-4">Calls to Action</label>
                         </div>
                 </fieldset>
                 <button

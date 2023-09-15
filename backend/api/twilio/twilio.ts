@@ -7,6 +7,8 @@ const client = require('twilio')(accountSid, authToken);
 
 export function twilioInitialMessage() {
 
+    console.log("authTokenConst", authTokenConst);
+
 new client.messages
     .create({
         body: `"Congratulations! You have now setup your Project Positive automated messaging service. 

@@ -212,3 +212,16 @@ body::before{
 .marg-rt {
   margin-right: 10px;
 }
+
+.box-mgn {
+  margin-left: 4px;
+}
+
+.alert{
+  margin-top: 3rem;
+  background-color: #ffcccb; /* Background color for the warning message */
+  color: #ff4444; /* Text color for the warning message */
+  padding: 10px; /* Padding around the warning message */
+  border: 1px solid #ff4444; /* Border around the warning message */
+  border-radius: 4px; /* Rounded corners for the warning message */ /* Spacing at the top of the warning message */
+}
