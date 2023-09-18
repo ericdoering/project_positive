@@ -7,8 +7,6 @@ import { twilioInitialMessage } from "../api/twilio/twilio"
 
 
 const router = express.Router();
-const msgUUID = uuidv4()
-
 
 
 router.post("/register", async (req, res) => {
@@ -22,8 +20,8 @@ try {
         req.body.phoneNumber,
     ];
 
-    let unConvertedTime = formatTime(req.body.time.hour, req.body.time.minute, req.body.time.timeOfDay)
-    let convertedTime = convertTimeToTimestamp(unConvertedTime)
+    let unConvertedTime = formatTime(req.body.time.hour, req.body.time.minute, req.body.time.timeOfDay);
+    let convertedTime = convertTimeToTimestamp(unConvertedTime);
 
 
     const messagePayload = [
@@ -36,8 +34,6 @@ try {
         req.body.Messages.Questions 
     ];
 
-    
-
 
     const client = await pool.connect();
 
@@ -48,10 +44,9 @@ try {
       await client.query(userQuery, userPayload);
 
 
+    const days = req.body.days; 
 
-
-
-      const days = req.body.days; 
+    console.log(convertedTime)
 
     days.forEach((day: "string") => {
       const values = [
@@ -82,7 +77,8 @@ try {
       client.release();
     }
 
-    twilioInitialMessage()
+
+    // twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
     
 
     res.status(201).json({ message: 'Data added successfully.' });

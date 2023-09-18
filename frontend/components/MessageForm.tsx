@@ -7,10 +7,12 @@ import { Props } from  "../types/Props";
 import { useRouter } from 'next/navigation';
 import { Loader } from "./Loader";
 import { UserContext } from "@/context";
+import { MessageAlert } from "./MessageAlert";
 
 
 export function MessageForm({user, setUser}: Props): JSX.Element{
   const { edit, setEditing } = useContext(UserContext);
+  const [alert, setAlert] = useState(false);
 
   const handleToggleEditing = () => {
     setEditing(true);
@@ -22,6 +24,10 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
 
       const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        if (messagesSelected.length === 0) {
+            setAlert(true);
+        }
+        else{  
         setUser({
           ...user,
           Messages: {
@@ -34,6 +40,7 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
         setLoading(true);
         handleToggleEditing()
         router.push('/register/review');
+        }
       };
 
       const handleDayChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -77,6 +84,7 @@ export function MessageForm({user, setUser}: Props): JSX.Element{
                  Submit
                 </button>
             </form>
+            {alert && <MessageAlert />}
             <div className="msg-help">
               <MessageHelp />
             </div>

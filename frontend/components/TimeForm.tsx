@@ -14,15 +14,15 @@ type Option = {
 };
 
 const hour: Option[] = [
-  { value: "1:00", label: "1:00" },
-  { value: "2:00", label: "2:00" },
-  { value: "3:00", label: "3:00" },
-  { value: "4:00", label: "4:00" },
-  { value: "5:00", label: "5:00" },
-  { value: "6:00", label: "6:00" },
-  { value: "7:00", label: "7:00" },
-  { value: "8:00", label: "8:00" },
-  { value: "9:00", label: "9:00" },
+  { value: "1:00", label: " 1:00" },
+  { value: "2:00", label: " 2:00" },
+  { value: "3:00", label: " 3:00" },
+  { value: "4:00", label: " 4:00" },
+  { value: "5:00", label: " 5:00" },
+  { value: "6:00", label: " 6:00" },
+  { value: "7:00", label: " 7:00" },
+  { value: "8:00", label: " 8:00" },
+  { value: "9:00", label: " 9:00" },
   { value: "10:00", label: "10:00" },
   { value: "11:00", label: "11:00" },
   { value: "12:00", label: "12:00" },
@@ -36,8 +36,8 @@ const minute: Option[] = [
 ];
 
 const timeOfDay: Option[] = [
-  { value: "AM", label: "AM" },
-  { value: "PM", label: "PM" },
+  { value: "AM", label: " AM" },
+  { value: "PM", label: " PM" },
 ];
 
 export const TimeForm = ({user, setUser}: Props) => {
@@ -203,9 +203,9 @@ export const TimeForm = ({user, setUser}: Props) => {
             </button>
           </form>
           <div className="time flex flex-row justify-center rounded">
-          {selectedOption1 === null ? "" : <span className="text-center">{time.slice(0,2)}</span>}
-          {selectedOption2 === null ? "" : <span className="text-center">{time.slice(2, 5)}</span>}
-          {selectedOption3 === null ? "" : <span className="text-center">{time.slice(5, time.length)}</span>}
+          {selectedOption1 === null ? "" : <span className="text-center">{selectedOption1.label.slice(0,3)}</span>}
+          {selectedOption2 === null ? "" : <span className="text-center bfr">{selectedOption2.label.slice(2)}</span>}
+          {selectedOption3 === null ? "" : <span className="text-center">{selectedOption3.label}</span>}
           </div>
         </div>
         </div>

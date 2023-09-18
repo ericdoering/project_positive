@@ -218,10 +218,16 @@ body::before{
 }
 
 .alert{
+  position: static;
   margin-top: 3rem;
-  background-color: #ffcccb; /* Background color for the warning message */
-  color: #ff4444; /* Text color for the warning message */
-  padding: 10px; /* Padding around the warning message */
-  border: 1px solid #ff4444; /* Border around the warning message */
-  border-radius: 4px; /* Rounded corners for the warning message */ /* Spacing at the top of the warning message */
+  background-color: #ffcccb;
+  color: #ff4444;
+  padding: 10px; 
+  border: 1px solid #ff4444; 
+  border-radius: 4px; 
+}
+
+
+.bfr {
+  margin-right: 0.5rem;
 }
