@@ -16,7 +16,14 @@ export function formatTime(hour: string | null = "10:00", minute: string | null 
       throw new Error('Invalid time format. Please provide valid hour, minute, and time of day.');
     }
 
-    const formattedHour = hourNumber % 12 || 12;
+    let formattedHour = hourNumber
+
+    if(formattedHour !== 12){
+      formattedHour = formattedHour -4
+    }
+    else if(formattedHour === 12){
+      formattedHour = formattedHour + 8
+    }
   
     const formattedMinute = minuteNumber < 10 ? `0${minuteNumber}` : minuteNumber.toString();
   

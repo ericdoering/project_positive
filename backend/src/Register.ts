@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { convertTimeToTimestamp } from "../utilities/convertTimeToTimestamp";
 import { formatTime } from "../utilities/time_formatter";
 import { twilioInitialMessage } from "../api/twilio/twilio"
+import { twilioMessenger } from "../api/twilio/twilio";
 
 
 const router = express.Router();
@@ -46,7 +47,7 @@ try {
 
     const days = req.body.days; 
 
-    console.log(convertedTime)
+    console.log(typeof (convertedTime))
 
     days.forEach((day: "string") => {
       const values = [
@@ -78,7 +79,9 @@ try {
     }
 
 
-    // twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
+    twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
+
+    twilioMessenger(req.body.firstName, req.body.phoneNumber, convertedTime as string);
     
 
     res.status(201).json({ message: 'Data added successfully.' });

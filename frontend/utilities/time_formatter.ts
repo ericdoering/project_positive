@@ -17,7 +17,7 @@ export function formatTime(hour: string | null = "10:00", minute: string | null 
     }
 
     const formattedHour = hourNumber % 12 || 12;
-  
+
     const formattedMinute = minuteNumber < 10 ? `0${minuteNumber}` : minuteNumber.toString();
   
     const formattedTime = `${formattedHour}:${formattedMinute} ${timeOfDay}`;
