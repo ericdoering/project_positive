@@ -71,7 +71,7 @@ import { Loader } from "./Loader";
                 <div className="rounded bg-gray-100 shadow-lg review-form">
                 <div className='text-center'>
                     <h2 className="font-bold">Time:</h2>
-                    <h3>{user.time.hour.slice(0,2)}:{user.time.minute.slice(2)}  {user.time.timeOfDay}</h3>
+                    <h3>{user.time.hour.slice(0,2)}:{user.time.minute.slice(2,4)}  {user.time.timeOfDay}</h3>
                 </div>
                 <button
                     onClick={() => router.push('/register/time')}

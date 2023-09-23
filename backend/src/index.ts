@@ -1,7 +1,6 @@
 import express from "express";
 import pool from "../database/db";
 import bodyParser from "body-parser";
-import { generateRandomMessage } from "../utilities/messageGenerator";
 import { registerRouter } from "./Register";
 
 
@@ -27,7 +26,6 @@ app.use(bodyParser.json());
 app.use(registerRouter)
 
 
-console.log(generateRandomMessage())
 
 
 

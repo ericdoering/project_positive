@@ -26,5 +26,5 @@ export const questions = [
     ["What did I do today that was fun?"],
     ["What positive things did I notice about my surroundings today?"],
     ["What made me feel energized today?"],
-    ["What made me happy to be alive today?"]
+    ["What made me happy to be alive today?"],
 ]

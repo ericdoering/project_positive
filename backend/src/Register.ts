@@ -5,6 +5,7 @@ import { convertTimeToTimestamp } from "../utilities/convertTimeToTimestamp";
 import { formatTime } from "../utilities/time_formatter";
 import { twilioInitialMessage } from "../api/twilio/twilio"
 import { twilioMessenger } from "../api/twilio/twilio";
+import { randomMessageGenerator } from "../utilities/messageGenerator"
 
 
 const router = express.Router();
@@ -35,6 +36,17 @@ try {
         req.body.Messages.Questions 
     ];
 
+    let quotes = messagePayload[4];
+    let calls_to_action = messagePayload[5];
+    let questions = messagePayload[6];
+
+
+    const randomMsg = await randomMessageGenerator(calls_to_action, questions, quotes);
+ 
+
+    console.log("Message:", randomMsg)
+
+
 
     const client = await pool.connect();
 
@@ -47,7 +59,7 @@ try {
 
     const days = req.body.days; 
 
-    console.log(typeof (convertedTime))
+    console.log(convertedTime)
 
     days.forEach((day: "string") => {
       const values = [
@@ -79,9 +91,9 @@ try {
     }
 
 
-    twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
+    // twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
 
-    twilioMessenger(req.body.firstName, req.body.phoneNumber, convertedTime as string);
+    // twilioMessenger(req.body.firstName, req.body.phoneNumber, convertedTime as string);
     
 
     res.status(201).json({ message: 'Data added successfully.' });
@@ -92,5 +104,6 @@ try {
 });
 
 export { router as registerRouter };
+
 
 

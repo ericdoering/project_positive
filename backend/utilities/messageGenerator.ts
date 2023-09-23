@@ -8,29 +8,13 @@ function getRandomSentence(sentences: string[][]): string {
 }
 
 export async function randomMessageGenerator(
-  callsToAction: string[][],
-  questions: string[][],
-  quoteList: string[][]
-): Promise<string>;
-export async function randomMessageGenerator(
-  callsToAction: string[][],
-  quoteList: string[][]
-): Promise<string>;
-export async function randomMessageGenerator(
-  callsToAction: string[][],
-  questions: string[][]
-): Promise<string>;
-export async function randomMessageGenerator(
-  callsToAction: string[][]
-): Promise<string>;
-export async function randomMessageGenerator(
-  callsToAction: string[][],
-  questions?: string[][],
-  quoteList?: string[][]
+  useCallsToAction: boolean,
+  useQuestions: boolean,
+  useQuotes: boolean
 ): Promise<string> {
-  const randomCallToAction = getRandomSentence(callsToAction);
-  const randomQuestion = questions ? getRandomSentence(questions) : '';
-  const randomQuote = quoteList ? getRandomSentence(quoteList) : '';
+  const randomCallToAction = useCallsToAction ? getRandomSentence(callsToAction) : '';
+  const randomQuestion = useQuestions ? getRandomSentence(questions) : '';
+  const randomQuote = useQuotes ? await getRandomQuote() : '';
 
   const selector = Math.floor(Math.random() * 3);
 
@@ -43,13 +27,9 @@ export async function randomMessageGenerator(
   }
 }
 
-export async function generateRandomMessage() {
+async function getRandomQuote(): Promise<string> {
   const quotes = await getApi("https://type.fit/api/quotes");
-  const randomMsg = await randomMessageGenerator(callsToAction, questions, quotes);
-  return console.log(randomMsg);
+  return getRandomSentence(quotes);
 }
-
-
-
 
 
