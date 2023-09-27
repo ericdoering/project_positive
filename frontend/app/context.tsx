@@ -2,6 +2,7 @@
 
 import './globals.css'
 import { useState, createContext, Dispatch, SetStateAction } from 'react';
+import { Props } from 'types/Props';
 import { User } from 'types/User';
 
 
@@ -10,6 +11,7 @@ type UserContextData = {
   setUser: Dispatch<SetStateAction<User>>;
   edit: boolean
   setEditing: Dispatch<SetStateAction<boolean>>;
+  resetToDefault: () => void;
 }
 
 export const UserContext = createContext<UserContextData>({
@@ -32,6 +34,7 @@ export const UserContext = createContext<UserContextData>({
   setUser: function (value: SetStateAction<User>): void {},
   edit: false, 
   setEditing: () => {}, 
+  resetToDefault: () => {},
 
 });
 
@@ -59,11 +62,33 @@ export default function Context({
     },
   });
 
+
+  const resetToDefault = () => {
+    setUser({
+      ...user,
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      days: [],
+      time: {
+        hour: '',
+        minute: '',
+        timeOfDay: '',
+      },
+      Messages: {
+        Quotes: false,
+        Questions: false,
+        "Calls to Action": false,
+      },
+    });
+    setEditing(false);
+  };
+
   return (
   <>
-    <UserContext.Provider value={{user, setUser, edit, setEditing}}>
+    <UserContext.Provider value={{ user, setUser, edit, setEditing, resetToDefault }}>
     {children}
     </UserContext.Provider>
   </>
   )
-}
+};

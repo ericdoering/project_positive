@@ -2,6 +2,7 @@ import express from "express";
 import pool from "../database/db";
 import bodyParser from "body-parser";
 import { registerRouter } from "./Register";
+import { phoneRouter } from "./phoneNumber";
 
 
 const app = express();
@@ -23,7 +24,8 @@ app.get('/', (req, res)=> {
 });
 
 app.use(bodyParser.json());
-app.use(registerRouter)
+app.use(registerRouter);
+app.use(phoneRouter);
 
 
 

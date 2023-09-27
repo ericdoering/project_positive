@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Instructions } from "../components/Instructions";
 import { Summary } from "../components/Summary";
 import { MessageExamples } from "../components/MessageExamples";

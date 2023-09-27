@@ -1,11 +1,13 @@
 "use client";
 import { DaysForm } from "../../components/DaysForm";
+import { PhoneAlert } from "../../components/PhoneAlert"
 import React, { useState, ChangeEvent, FormEvent, useContext } from "react";
 import { Props } from "types/Props";
 import { User } from "../../../frontend/types/User";
 import { useRouter } from 'next/navigation';
 import { UserContext } from "@/context";
 import { Loader } from "components/Loader";
+import axios from "axios";
 
 
 
@@ -14,12 +16,13 @@ export default function Register(): JSX.Element {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [userSubmit, setUserSubmit] = useState(false);
+  const [alert, setAlert] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {user, setUser, edit} = useContext(UserContext);
 
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     setUser({
       ...user,
       firstName: firstName,
@@ -27,12 +30,23 @@ export default function Register(): JSX.Element {
       phoneNumber: phoneNumber,
     })
     event.preventDefault();
-    setUserSubmit(true);
-    setLoading(true);
-    setFirstName("");
-    setLastName("");
-    setPhoneNumber("");
-    edit ? router.push('/register/review') : router.push('/register/days')
+
+
+    const response = await axios.post(`http://localhost:3456/phoneNumber`, user)
+    console.log("error Response", response.status)
+    if(response.status !== 200){
+      setAlert(true);
+    }
+    else {
+      console.log("Success Response", response.status)
+      event.preventDefault();
+      setUserSubmit(true);
+      setLoading(true);
+      setFirstName("");
+      setLastName("");
+      setPhoneNumber("");
+      edit ? router.push('/register/review') : router.push('/register/days')
+    }
   };
 
   const handleFirstNameChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -117,6 +131,7 @@ export default function Register(): JSX.Element {
       Submit
     </button>
   </form>
+  {alert && <PhoneAlert />}
 </div>
 </div>
   }
