@@ -18,7 +18,7 @@ export async function getApi(url: string): Promise<string[][]> {
     console.error("Error fetching API:", error);
     return []; 
   }
-}
+};
 
 
 async function main() {

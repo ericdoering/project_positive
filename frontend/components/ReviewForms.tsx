@@ -10,9 +10,11 @@ import Link from "next/link";
 import { DaysForm } from "./DaysForm";
 import { useRouter } from 'next/navigation';
 import { Loader } from "./Loader";
+import { UserContext } from "@/context";
   
   
-  export function ReviewForms({user, setUser}: Props): JSX.Element {
+  export function ReviewForms({setUser}: Props): JSX.Element {
+    const { user } = useContext(UserContext);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     

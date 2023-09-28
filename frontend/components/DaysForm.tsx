@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, ChangeEvent, FormEvent, useContext } from "react";
+import React, { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import { TimeForm } from "./TimeForm";
 import { Props } from  "../types/Props";
 import { useRouter } from 'next/navigation';
@@ -15,7 +15,7 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
     const [alert, setAlert] = useState(false);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
-    
+
 
       const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();

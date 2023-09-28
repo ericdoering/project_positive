@@ -1,7 +1,7 @@
 "use client";
 import { DaysForm } from "../../components/DaysForm";
 import { PhoneAlert } from "../../components/PhoneAlert"
-import React, { useState, ChangeEvent, FormEvent, useContext } from "react";
+import React, { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import { Props } from "types/Props";
 import { User } from "../../../frontend/types/User";
 import { useRouter } from 'next/navigation';
@@ -23,18 +23,18 @@ export default function Register(): JSX.Element {
 
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    setUser({
-      ...user,
-      firstName: firstName,
-      lastName: lastName,
-      phoneNumber: phoneNumber,
-    })
     event.preventDefault();
 
 
-    const response = await axios.post(`http://localhost:3456/phoneNumber`, user)
-    console.log("error Response", response.status)
+    const response = await axios.post(
+      `http://localhost:3456/phoneNumber`, user, {
+        validateStatus : function (status){
+          return status < 500
+        }
+      })
+    console.log("THE MAIN RESPONSE", response)
     if(response.status !== 200){
+      console.log("error Response", response.status)
       setAlert(true);
     }
     else {
@@ -50,15 +50,24 @@ export default function Register(): JSX.Element {
   };
 
   const handleFirstNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setFirstName(event.target.value);
+    setUser({
+      ...user,
+      firstName: event.target.value,
+    })
   };
 
   const handleLastNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setLastName(event.target.value);
+    setUser({
+      ...user,
+      lastName: event.target.value,
+    })
   };
 
   const handlePhoneNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setPhoneNumber(event.target.value);
+    setUser({
+      ...user,
+      phoneNumber: event.target.value,
+    })
   };
 
   return (
@@ -75,7 +84,6 @@ export default function Register(): JSX.Element {
           id="floating_first_name"
           className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
-          value={firstName}
           onChange={handleFirstNameChange}
           required
         />
@@ -93,7 +101,6 @@ export default function Register(): JSX.Element {
           id="floating_last_name"
           className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
-          value={lastName}
           onChange={handleLastNameChange}
           required
         />
@@ -112,7 +119,6 @@ export default function Register(): JSX.Element {
           id="floating_phone"
           className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
-          value={phoneNumber}
           onChange={handlePhoneNumberChange}
           required
         />

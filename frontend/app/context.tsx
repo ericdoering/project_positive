@@ -33,8 +33,8 @@ export const UserContext = createContext<UserContextData>({
   },
   setUser: function (value: SetStateAction<User>): void {},
   edit: false, 
-  setEditing: () => {}, 
-  resetToDefault: () => {},
+  setEditing: () => {console.log("SET EDITING")}, 
+  resetToDefault: () => {console.log("OG FUNCTION")},
 
 });
 
@@ -64,6 +64,7 @@ export default function Context({
 
 
   const resetToDefault = () => {
+    console.log('RESET TO DEFAULT')
     setUser({
       ...user,
       firstName: '',

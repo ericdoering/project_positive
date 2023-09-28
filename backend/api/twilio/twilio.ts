@@ -7,8 +7,8 @@ const client = require('twilio')(accountSid, authToken);
 
 export function twilioInitialMessage(name:string, phoneNumber:string) {
 
-new client.validationRequests
-    .create({friendlyName: `${name}`, phoneNumber: `+1${phoneNumber}`})
+// new client.validationRequests
+//     .create({friendlyName: `${name}`, phoneNumber: `+1${phoneNumber}`})
 
 new client.messages
     .create({

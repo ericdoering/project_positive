@@ -91,7 +91,7 @@ try {
     }
 
 
-    // twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
+    twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
 
     // twilioMessenger(req.body.firstName, req.body.phoneNumber, convertedTime as string);
     
