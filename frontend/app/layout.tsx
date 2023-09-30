@@ -8,7 +8,7 @@ import { Props } from 'types/Props';
 import { Metadata } from 'next';
 import { useContext, useEffect } from 'react';
 import { UserContext } from "@/context";
-import { useRouter } from 'next/router';
+import Refresh from 'components/Refresh';
 
 
 
@@ -30,25 +30,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  const confirmationMessage = 'You have unsaved changes. Are you sure you want to leave this page?';
-
-  useEffect(() => {
-    const checkPageRefresh = () => {
-      const isPageRefreshed = window.performance
-        && window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD;
-
-      if (isPageRefreshed && window.location.pathname !== '/') {
-        // Redirect to the root ("/") route
-        window.alert(confirmationMessage)
-        window.location.href = '/';
-      }
-    };
-
-    window.addEventListener('load', checkPageRefresh);
-    return () => {
-      window.removeEventListener('load', checkPageRefresh);
-    };
-  }, []);
 
   return (
   <>
@@ -87,6 +68,7 @@ export default function RootLayout({
   
     return (
       <>
+        <Refresh />
         <Link className="mr-6" href="/" onClick={handleHomeClick}>
           Home
         </Link>
