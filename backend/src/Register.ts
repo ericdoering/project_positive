@@ -13,6 +13,22 @@ const router = express.Router();
 
 router.post("/register", async (req, res) => {
 
+  try {
+    const databaseCount = await pool.query('SELECT COUNT(*) FROM users;');
+
+    const count = parseInt(databaseCount.rows[0].count); // Convert count to an integer
+    console.log("DATABASE SIZE", count);
+
+  if (count > 40) {
+    return res.status(400).json({ message: 'Database is full, admin must review before proceeding' });
+  }
+
+  } catch (error) {
+    console.error('Error checking database size:', error);
+    res.status(500).json({ message: 'Internal server error.' });
+  };
+
+
 try {
     const userUUID = uuidv4();
     const userPayload  = [
@@ -42,11 +58,6 @@ try {
 
 
     const randomMsg = await randomMessageGenerator(calls_to_action, questions, quotes);
- 
-
-    console.log("Message:", randomMsg)
-
-
 
     const client = await pool.connect();
 
@@ -59,7 +70,6 @@ try {
 
     const days = req.body.days; 
 
-    console.log(convertedTime)
 
     days.forEach((day: "string") => {
       const values = [
@@ -91,7 +101,7 @@ try {
     }
 
 
-    twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
+    // twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
 
     // twilioMessenger(req.body.firstName, req.body.phoneNumber, convertedTime as string);
     
