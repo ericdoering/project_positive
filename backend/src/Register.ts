@@ -2,6 +2,7 @@ import express from "express";
 import pool from "../database/db";
 import { v4 as uuidv4 } from 'uuid';
 import { convertTimeToTimestamp } from "../utilities/convertTimeToTimestamp";
+import { twilioTimeConverter } from "../utilities/twilioTimeConverter"
 import { formatTime } from "../utilities/time_formatter";
 import { twilioInitialMessage } from "../api/twilio/twilio"
 import { twilioMessenger } from "../api/twilio/twilio";
@@ -17,7 +18,6 @@ router.post("/register", async (req, res) => {
     const databaseCount = await pool.query('SELECT COUNT(*) FROM users;');
 
     const count = parseInt(databaseCount.rows[0].count); // Convert count to an integer
-    console.log("DATABASE SIZE", count);
 
   if (count > 40) {
     return res.status(400).json({ message: 'Database is full, admin must review before proceeding' });
@@ -39,7 +39,10 @@ try {
     ];
 
     let unConvertedTime = formatTime(req.body.time.hour, req.body.time.minute, req.body.time.timeOfDay);
+
     let convertedTime = convertTimeToTimestamp(unConvertedTime);
+
+    let twilioTime = twilioTimeConverter(convertedTime as string)
 
 
     const messagePayload = [
@@ -103,7 +106,7 @@ try {
 
     // twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
 
-    // twilioMessenger(req.body.firstName, req.body.phoneNumber, convertedTime as string);
+    twilioMessenger(req.body.firstName, req.body.phoneNumber, twilioTime);
     
 
     res.status(201).json({ message: 'Data added successfully.' });
