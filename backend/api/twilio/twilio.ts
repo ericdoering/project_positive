@@ -21,14 +21,12 @@ new client.messages
 };
 
 
-export function twilioMessenger(name:string, phoneNumber:string, twilioTime:any ){
-    console.log("Twilio date: ", new Date(Date.UTC(twilioTime.year, twilioTime.month, twilioTime.day, twilioTime.hours, twilioTime.minutes)))
-    console.log(twilioTime.seconds)
+export function twilioMessenger(name:string, phoneNumber:string, twilioTime:any, message: string){
     new client.messages
       .create({
-         body: 'This is a scheduled message',
+         body: `Hi ${name}. Here is your Project Positive message this week. ${message}`,
          messagingServiceSid: twilioMessagingSeviceConst,
-         sendAt: new Date(Date.UTC(twilioTime.year, twilioTime.month, 5, twilioTime.hours, twilioTime.minutes)),
+         sendAt: new Date(Date.UTC(twilioTime.year, twilioTime.month, twilioTime.day, twilioTime.hours, twilioTime.minutes, twilioTime.seconds)),
          scheduleType: 'fixed',
          to: `+1${phoneNumber}`
        })

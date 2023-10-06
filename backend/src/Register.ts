@@ -39,10 +39,15 @@ try {
     ];
 
     let unConvertedTime = formatTime(req.body.time.hour, req.body.time.minute, req.body.time.timeOfDay);
-
     let convertedTime = convertTimeToTimestamp(unConvertedTime);
+    let day = req.body.days[0]
+    let time = req.body.time
 
-    let twilioTime = twilioTimeConverter(convertedTime as string)
+    console.log("DAYYYYY", day)
+
+    let twilioTime = twilioTimeConverter(time, day)
+
+    console.log("TWILIO TIME!!!!!", twilioTime)
 
 
     const messagePayload = [
@@ -106,7 +111,7 @@ try {
 
     // twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
 
-    twilioMessenger(req.body.firstName, req.body.phoneNumber, twilioTime);
+    twilioMessenger(req.body.firstName, req.body.phoneNumber, twilioTime, randomMsg);
     
 
     res.status(201).json({ message: 'Data added successfully.' });
