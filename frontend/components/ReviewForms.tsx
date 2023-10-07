@@ -53,11 +53,9 @@ import { UserContext } from "@/context";
 
                 <div className="rounded bg-gray-100 shadow-lg review-form">
                 <div className='text-center'>
-                    <h2 className="font-bold">Days:</h2>
+                    <h2 className="font-bold">Day:</h2>
                         <ul>
-                        {user.days.map((d) => (
-                            <li key={d}>{d}</li>
-                            ))}
+                        {user.days}
                         </ul>
                 </div>
                 <button

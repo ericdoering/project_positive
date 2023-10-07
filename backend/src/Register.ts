@@ -40,14 +40,11 @@ try {
 
     let unConvertedTime = formatTime(req.body.time.hour, req.body.time.minute, req.body.time.timeOfDay);
     let convertedTime = convertTimeToTimestamp(unConvertedTime);
-    let day = req.body.days[0]
+    let day = req.body.days
     let time = req.body.time
 
-    console.log("DAYYYYY", day)
 
     let twilioTime = twilioTimeConverter(time, day)
-
-    console.log("TWILIO TIME!!!!!", twilioTime)
 
 
     const messagePayload = [
@@ -65,6 +62,7 @@ try {
     let questions = messagePayload[6];
 
 
+    const initialRandomMsg = await randomMessageGenerator(calls_to_action, questions, quotes);
     const randomMsg = await randomMessageGenerator(calls_to_action, questions, quotes);
 
     const client = await pool.connect();
@@ -79,37 +77,35 @@ try {
     const days = req.body.days; 
 
 
-    days.forEach((day: "string") => {
       const values = [
         uuidv4(), 
         messagePayload[1], 
-        day,            
+        days, 
         messagePayload[3], 
         messagePayload[4], 
         messagePayload[5], 
         messagePayload[6]  
       ];
-
+  
       client.query(messageQuery, values, (err, result) => {
         if (err) {
           console.error(`Error inserting data for ${day}:`, err);
         } else {
           console.log(`Data inserted for ${day}`);
         }
-    });
-  });
+      });
 
-      await client.query('COMMIT');
-    } catch (error) {
-      await client.query('ROLLBACK');
-      throw error;
-    } finally {
+  
+    await client.query('COMMIT');
+  } catch (error) {
+    await client.query('ROLLBACK');
+    throw error;
+  } finally {
+    client.release();
+  }
 
-      client.release();
-    }
 
-
-    // twilioInitialMessage(req.body.firstName, req.body.phoneNumber);
+    twilioInitialMessage(req.body.firstName, req.body.phoneNumber, initialRandomMsg);
 
     twilioMessenger(req.body.firstName, req.body.phoneNumber, twilioTime, randomMsg);
     
