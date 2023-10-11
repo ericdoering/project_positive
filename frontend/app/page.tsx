@@ -35,7 +35,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center my-32">
+      <div className="flex flex-col items-center justify-center my-32">
         <div className="landing rounded">
         <div className="mt-6 flex flex-col items-center justify-center card-container">
           <section ref={(el: HTMLInputElement) => (cardRefs.current[0] = el)} className="flex flex-col items-center container justify-center card">

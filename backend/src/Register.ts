@@ -4,8 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { convertTimeToTimestamp } from "../utilities/convertTimeToTimestamp";
 import { twilioTimeConverter } from "../utilities/twilioTimeConverter"
 import { formatTime } from "../utilities/time_formatter";
-import { twilioInitialMessage } from "../api/twilio/twilio"
-import { twilioMessenger } from "../api/twilio/twilio";
+import { twilioInitialMessage, twilioMessenger} from "../api/twilio/twilio"
 import { randomMessageGenerator } from "../utilities/messageGenerator"
 
 
@@ -19,7 +18,7 @@ router.post("/register", async (req, res) => {
 
     const count = parseInt(databaseCount.rows[0].count); // Convert count to an integer
 
-  if (count > 40) {
+  if (count > 50) {
     return res.status(400).json({ message: 'Database is full, admin must review before proceeding' });
   }
 
@@ -105,9 +104,9 @@ try {
   }
 
 
-    twilioInitialMessage(req.body.firstName, req.body.phoneNumber, initialRandomMsg);
+  twilioInitialMessage(req.body.firstName, req.body.phoneNumber, initialRandomMsg);
 
-    twilioMessenger(req.body.firstName, req.body.phoneNumber, twilioTime, randomMsg);
+  twilioMessenger(req.body.firstName, req.body.phoneNumber, twilioTime, randomMsg);
     
 
     res.status(201).json({ message: 'Data added successfully.' });

@@ -4,41 +4,60 @@ import React, { useState, ChangeEvent, FormEvent, useContext, useEffect } from "
 import { TimeForm } from "./TimeForm";
 import { Props } from  "../types/Props";
 import { useRouter } from 'next/navigation';
-import Link from 'next/link'
 import { Loader } from "./Loader";
 import { UserContext } from "@/context";
 import { DaysAlert } from "./DaysAlert";
+import { SixDaysAlert } from "./SixDaysAlert";
 
 export function DaysForm({user, setUser}: Props): JSX.Element{
     const { edit } = useContext(UserContext);
     const [daysSelected, setDaysSelected] = useState<string[]>([]);
     const [alert, setAlert] = useState(false);
+    const [sixDaysAlert, setSixDaysAlert] = useState(false)
+    const [disableSubmit, setDisableSubmit] = useState(false); 
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
 
-      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const d = new Date();
+    let day = weekday[d.getDay()];
+
+
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (daysSelected.length === 0) {
-            setAlert(true);
+          setAlert(true);
         }
-        else{
-        event.preventDefault();
-        setUser({
+        else if(sixDaysAlert){
+            setDisableSubmit(true)
+        } 
+        else {
+          setUser({
             ...user,
             days: daysSelected
-          })
-
-        setDaysSelected([]);
-        setLoading(true);
-        edit ? router.push('/register/review') : router.push('/register/time')
+          });
+      
+          setDaysSelected([]);
+          setLoading(true);
+          edit ? router.push('/register/review') : router.push('/register/time');
         }
+      };
+      
+      const handleDayChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.target;
+        setDaysSelected(value as any);
+        
+        // Check if the selected day matches the current day
+        if (value === day) {
+          setSixDaysAlert(true);
+          setDisableSubmit(true); // Disable the submit button
+          setAlert(false)
+        } else {
+          setSixDaysAlert(false);
+          setDisableSubmit(false); // Enable the submit button
         }
-
-        const handleDayChange = (event: ChangeEvent<HTMLInputElement>) => {
-            const { value } = event.target;
-            setDaysSelected(value as any);
-        };
+      };
 
     return (
         <>
@@ -93,6 +112,7 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
                 </button>
             </form>
             {alert && <DaysAlert />}
+            {sixDaysAlert && <SixDaysAlert />}
         </div>
         </div>
         }

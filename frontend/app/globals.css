@@ -68,6 +68,9 @@ body::before{
 
 .circle-container {
   margin-top: 5rem;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
 }
 
 .circle {
@@ -142,7 +145,6 @@ body::before{
 .anti-warp {
     object-fit: cover;
 }
-
 
 .reg-inst {
   width: 40%
@@ -220,7 +222,7 @@ body::before{
 .alert{
   position: static;
   margin-top: 3rem;
-  background-color: #ffcccb;
+  background-color: #f9eded;
   color: #ff4444;
   padding: 10px; 
   border: 1px solid #ff4444; 
