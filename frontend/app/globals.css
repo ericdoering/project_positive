@@ -38,14 +38,21 @@ body::before{
     height: 20rem;
 }
 
+@media screen and (max-width: 768px) {
+  .form-size {
+    width: 75%; 
+    height: 75%;
+  }
+}
+
 .review-heading {
-  font-size: 2rem; /* Adjust the font size as needed */
-  padding-bottom: 0.5rem; /* Add padding to create space below the heading */
-  border-bottom: 2px solid #4a5568; /* Adjust the color and thickness as needed */
+  font-size: 2rem; 
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #4a5568; 
 }
 
 .gray-border {
-  border-bottom: 1px solid #4a5568; /* Adjust the color and thickness as needed */
+  border-bottom: 1px solid #4a5568; 
 }
 
 .card-container {
