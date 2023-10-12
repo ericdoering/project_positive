@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useContext, useState } from 'react';
-import { MessageForm } from "./MessageForm"
-import { formatTime } from "../utilities/time_formatter"
+import { formatTime } from "../utilities/time_formatter";
 import { Props } from  "../types/Props";
 import { useRouter } from 'next/navigation';
 import { Loader } from './Loader';

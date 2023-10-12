@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
-import { TimeForm } from "./TimeForm";
+import React, { useState, ChangeEvent, FormEvent, useContext } from "react";
 import { Props } from  "../types/Props";
 import { useRouter } from 'next/navigation';
 import { Loader } from "./Loader";
@@ -46,16 +45,15 @@ export function DaysForm({user, setUser}: Props): JSX.Element{
       
       const handleDayChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
-        setDaysSelected(value as any);
+        setDaysSelected(value as unknown as string[]);
         
-        // Check if the selected day matches the current day
         if (value === day) {
           setSixDaysAlert(true);
-          setDisableSubmit(true); // Disable the submit button
+          setDisableSubmit(true);
           setAlert(false)
         } else {
           setSixDaysAlert(false);
-          setDisableSubmit(false); // Enable the submit button
+          setDisableSubmit(false); 
         }
       };
 

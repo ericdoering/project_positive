@@ -1,8 +1,6 @@
 import { dayMapper } from "../utilities/dayMapper";
 
-
-
-type twilioTime = {
+export type TwilioTime = {
     year: number,
     month: number,
     day: number,
@@ -11,8 +9,14 @@ type twilioTime = {
     seconds: number, 
 };
 
+type Time =  {
+    hour: string,
+    minute: string,
+    timeOfDay: string
+}
 
-export function twilioTimeConverter(time: any, dayStr: string): twilioTime {
+
+export function twilioTimeConverter(time: Time, dayStr: string): TwilioTime {
     const calculatedDay = dayMapper(dayStr as string);
 
     const hourPart = time.hour.split(":");
@@ -32,7 +36,7 @@ export function twilioTimeConverter(time: any, dayStr: string): twilioTime {
     }
 
     const date = new Date();
-    date.setUTCDate(date.getUTCDate() + calculatedDay); // Adjust the day based on the calculatedDay
+    date.setUTCDate(date.getUTCDate() + calculatedDay); 
 
     const year = date.getUTCFullYear();
     const month = date.getUTCMonth();
@@ -41,10 +45,10 @@ export function twilioTimeConverter(time: any, dayStr: string): twilioTime {
     const minutes = minute;
     const seconds = 0;
 
-    const twilioTime: twilioTime = { year, month, day, hours, minutes, seconds };
+    const twilioTime: TwilioTime = { year, month, day, hours, minutes, seconds };
 
     return twilioTime;
-}
+};
 
 
 

@@ -80,6 +80,7 @@ body::before{
   border: 5px solid rgb(255, 255, 255);
 }
 
+
 .review-form {
   width: 30rem;
   margin-bottom: 20px;
@@ -120,9 +121,9 @@ body::before{
 }
 
 .svg-container {
-  width: 100px; /* Set your desired width */
-  height: 100px; /* Set your desired height */
-  animation: shake 15s infinite; /* Adjust the duration and iteration as needed */
+  width: 100px; 
+  height: 100px; 
+  animation: shake 15s infinite; 
 }
 
 

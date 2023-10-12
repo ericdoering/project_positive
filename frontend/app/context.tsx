@@ -2,7 +2,6 @@
 
 import './globals.css'
 import { useState, createContext, Dispatch, SetStateAction } from 'react';
-import { Props } from 'types/Props';
 import { User } from 'types/User';
 
 

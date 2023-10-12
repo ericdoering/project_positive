@@ -12,11 +12,11 @@ export function convertTimeToTimestamp(timeString: string): string | null {
     }
   
     if (isNaN(hour) || isNaN(minute)) {
-      return null; // Invalid input
+      return null;
     }
   
     const now = new Date();
     const timestamp = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute);
     
-    return timestamp.toISOString(); // Returns a valid SQL Timestamp
+    return timestamp.toISOString(); 
   }

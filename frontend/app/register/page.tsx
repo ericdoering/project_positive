@@ -1,9 +1,8 @@
 "use client";
-import { DaysForm } from "../../components/DaysForm";
+
+
 import { PhoneAlert } from "../../components/PhoneAlert"
 import React, { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
-import { Props } from "types/Props";
-import { User } from "../../../frontend/types/User";
 import { useRouter } from 'next/navigation';
 import { UserContext } from "@/context";
 import { Loader } from "components/Loader";

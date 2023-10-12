@@ -1,8 +1,5 @@
 "use client";
 
-import Image from 'next/image';
-import happyFaceFour from "../assets/happy_face_four.png"
-
 export function RegisterInstructions(): JSX.Element {
     return (
     <>
@@ -55,8 +52,7 @@ export function RegisterInstructions(): JSX.Element {
                     Submit the form and begin recieving graditude messages and begin building a mental health practice.
                     </h5>
                 </div>
-            </div>
-           
+            </div>  
         </div>
         </div>
     </>

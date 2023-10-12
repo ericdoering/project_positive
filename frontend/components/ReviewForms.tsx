@@ -3,11 +3,6 @@
 import axios from "axios";
 import React, { useState, ChangeEvent, FormEvent, useContext } from "react";
 import { Props } from  "../types/Props";
-import { SubmitPage } from "./SubmitPage";
-import useHistory, { Navigate } from "react-router-dom";
-import { MessageForm } from "./MessageForm";
-import Link from "next/link";
-import { DaysForm } from "./DaysForm";
 import { useRouter } from 'next/navigation';
 import { Loader } from "./Loader";
 import { UserContext } from "@/context";

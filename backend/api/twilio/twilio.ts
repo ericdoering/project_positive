@@ -1,4 +1,5 @@
 
+import { TwilioTime } from "../../utilities/twilioTimeConverter";
 import { accountSidConst, authTokenConst, twilioPhoneConst, twilioMessagingSeviceConst } from "../twilio/constants";
 
 
@@ -29,7 +30,7 @@ try {
 };
 
 
-export async function twilioMessenger(name:string, phoneNumber:string, twilioTime:any, message: string){
+export async function twilioMessenger(name:string, phoneNumber:string, twilioTime: TwilioTime, message: string){
     try {
         new client.messages
         .create({
