@@ -2,7 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
+
 
 
 body {
@@ -240,4 +240,35 @@ body::before{
 
 .bfr {
   margin-right: 0.5rem;
+}
+
+
+/* Styles for screens up to 640 pixels wide (smaller screens) */
+@media screen and (max-width: 640px) {
+  .tm-form {
+    font-size: 0.6rem;
+    padding: 0;
+    width: 60%; 
+    height: 60%;
+  }
+
+  .tm-form-lb {
+    font-size: 0.6rem;
+  }
+
+  .review-form {
+    width: 75%;
+    height: 75%;
+  }
+
+  .rev-btn {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15rem;
+    align-items: center;
+  }
+
+  .rv-bt {
+    width: 570%;
+  }
 }

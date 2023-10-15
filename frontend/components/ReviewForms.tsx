@@ -96,15 +96,16 @@ import { UserContext } from "@/context";
                  Edit
                 </button>
                 </div>
-
-                <form onSubmit={handleSubmit}>
-                    <button
-                        type="submit"
-                        className="btn-sub bg-indigo-700 text-white active:bg-violet-600 text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" 
-                    >
-                    Submit
-                    </button>
-                </form> 
+                    <div className="rev-btn">
+                    <form onSubmit={handleSubmit}>
+                        <button
+                            type="submit"
+                            className="btn-sub bg-indigo-700 text-white active:bg-violet-600 text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 rv-bt" 
+                        >
+                        Submit
+                        </button>
+                    </form> 
+                    </div>
                 </div>
                 }
             <div className="loading">  

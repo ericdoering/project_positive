@@ -93,10 +93,10 @@ export const TimeForm = ({user, setUser}: Props) => {
         <form onSubmit={handleSubmit} className="marg-bg inline-block">
             <div className="flex justify-center space-x-4">
               <div>
-                <label htmlFor="formOption1" className="text-center block">
+                <label htmlFor="formOption1" className="text-center block tm-form-lb">
                   Select Hour
                 </label>
-                <div className="relative inline-block">
+                <div className="relative inline-block tm-form">
                   <select
                     required
                     id="formOption1"
@@ -127,10 +127,10 @@ export const TimeForm = ({user, setUser}: Props) => {
               </div>
 
               <div>
-                <label htmlFor="formOption2" className="text-center block">
+                <label htmlFor="formOption2" className="text-center block tm-form-lb">
                   Select Minute
                 </label>
-                <div className="relative inline-block">
+                <div className="relative inline-block tm-form">
                   <select
                     required
                     id="formOption2"
@@ -161,10 +161,10 @@ export const TimeForm = ({user, setUser}: Props) => {
               </div>
 
               <div>
-                <label htmlFor="formOption3" className="text-center block">
+                <label htmlFor="formOption3" className="text-center block tm-form-lb">
                   Select AM or PM
                 </label>
-                <div className="relative inline-block">
+                <div className="relative inline-block tm-form">
                   <select
                     required
                     id="formOption3"
