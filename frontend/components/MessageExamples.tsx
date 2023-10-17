@@ -12,7 +12,7 @@ export function MessageExamples(): JSX.Element {
         <div className="flex items-center justify-center rounded bg-gray-100 shadow-lg msg-examples-container">
             <h2 className="msg-examples">Message Examples</h2>
         </div>
-            <div className="marg-bg">
+            <div className="marg-bg msg-ex-crd ">
                 <div className="flex flex-row items-center bg-white border border-gray-900 rounded-lg shadow md:flex-row md:max-w-xl mb-6 anti-warp">
                 <Image className="msg-exp" height={100} width={100} src={oprah} alt="oprah" />
                     <div className="flex flex-col justify-between p-4 leading-normal">
