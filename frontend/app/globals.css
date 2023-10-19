@@ -6,20 +6,13 @@
 
 
 body {
-    background-color: rgb(190, 160, 243);           
+  margin: 0; 
+  padding: 0; 
+  background-image: linear-gradient(rgba(132, 81, 222, 0.3), rgba(132, 81, 222, 0.3)), url("../assets/main_background.png");
+  background-size: cover; 
+  background-attachment: fixed; 
 }
 
-body::before{
-  content: '';
-  position: absolute; 
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 500%;
-  background-image: url("../assets/main_background.png");
-  z-index: -1;
-  opacity: 0.5; 
-}
 
  h1{
   text-align:center;
@@ -38,12 +31,6 @@ body::before{
     height: 20rem;
 }
 
-@media screen and (max-width: 768px) {
-  .form-size {
-    width: 75%; 
-    height: 75%;
-  }
-}
 
 .review-heading {
   font-size: 2rem; 
@@ -242,6 +229,26 @@ body::before{
   margin-right: 0.5rem;
 }
 
+.rg-bt {
+  margin-left: 5rem;
+}
+
+.hm-bt {
+  margin-right: 5rem;
+}
+
+@media screen and (max-width: 900px) {
+  .form-size {
+    width: 75%; 
+    height: 75%;
+  }
+
+  .circle {
+    width: 40%;
+    height: 40%;
+  }
+}
+
 
 /* Styles for screens up to 640 pixels wide (smaller screens) */
 @media screen and (max-width: 640px) {
@@ -256,9 +263,25 @@ body::before{
     font-size: 0.6rem;
   }
 
-  .review-form, .tdl-crd, .inst-crd, .msg-ex-crd {
+ .tdl-crd, .inst-crd {
+    width: 90%;
+    height: 90%;
+  }
+
+  .msg-ex-crd {
     width: 75%;
-    height: 75%;
+    height: 50%;
+    right: 30.0rem;
+  }
+
+  .review-form {
+    width: 90%;
+    height: 90%;
+  }
+
+  .landing {
+    width: 95%;
+    height: 95%;
   }
 
   .rev-btn {
@@ -268,7 +291,38 @@ body::before{
     align-items: center;
   }
 
+  .circle {
+    width: 25%;
+    height: 25%;
+  }
+
   .rv-bt {
     width: 570%;
   }
+
+  .reg-inst {
+    width: 85%;
+  }
+
+  .nav {
+    font-size: x-small;
+    height: 75%;
+  }
+
+  .ex-crds {
+    margin-left: 9rem;
+  }
+  
+  .nav-el {
+    margin-left: 5rem;
+  }
+
+  .rg-bt {
+    margin-right: 14rem;
+  }
+
+  .hm-bt {
+    margin-right: 1rem;
+  }
+
 }
