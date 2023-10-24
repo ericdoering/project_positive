@@ -23,6 +23,8 @@ app.get('/', (req, res)=> {
     res.send("Welcome to root URL of Server");
 });
 
+app.use(express.static("build"));
+
 app.use(bodyParser.json());
 app.use(registerRouter);
 app.use(phoneRouter);
